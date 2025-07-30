@@ -74,7 +74,7 @@ class TestReviewService(unittest.TestCase):
         self.assertEqual(result[0].buyer, "Test Buyer")
         mock_get.assert_called_once_with(
             "http://localhost:8000/reviews/product/1",
-            headers={"Authorization": "Bearer test_token"}
+            headers={}
         )
 
     @patch('services.review_service.requests.get')

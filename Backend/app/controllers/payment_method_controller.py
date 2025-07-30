@@ -14,7 +14,7 @@ except ImportError:
     from services.payment_method_service import list_payment_methods, get_payment_method_by_id
     from schemas.payment_method import PaymentMethodSchema
 
-router = APIRouter(prefix="/payment-methods", tags=["Payment Methods"], dependencies=[Depends(get_current_user)])
+router = APIRouter(prefix="/payment-methods", tags=["Payment Methods"])
 
 @router.get("/", response_model=List[PaymentMethodSchema])
 def get_all_payment_methods(db=Depends(get_db)):

@@ -112,9 +112,11 @@ def check_and_install_dependencies():
         ("fastapi", "framework web"),
         ("uvicorn[standard]", "servidor ASGI"),
         ("python-jose[cryptography]", "JWT tokens"),
+        ("PyJWT>=2.10.0", "JWT tokens adicional"),
         ("python-multipart", "formularios"),
         ("passlib[bcrypt]", "hashing passwords"),
         ("pydantic>=2.0.0", "validación datos"),
+        ("requests>=2.31.0", "HTTP cliente"),
         ("pytest", "testing framework")
     ]
     

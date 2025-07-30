@@ -31,8 +31,9 @@ def install_dependencies():
     
     deps = [
         "fastapi", "uvicorn[standard]", "python-jose[cryptography]",
-        "python-multipart", "passlib[bcrypt]", "pydantic>=2.0.0",
-        "streamlit", "requests", "Pillow"
+        "PyJWT>=2.10.0", "python-multipart", "passlib[bcrypt]", 
+        "pydantic>=2.0.0", "requests>=2.31.0",
+        "streamlit", "Pillow"
     ]
     
     print("Instalando dependencias...")

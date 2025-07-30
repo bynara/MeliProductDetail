@@ -2,11 +2,13 @@ import requests
 import streamlit as st
 from models.product import Product
 from typing import Optional, List
+
+
+HEADERS = {}
+
 def get_product_detail(product_id: str) -> Optional[Product]:
-    token = st.session_state.get("token")
-    headers = {"Authorization": f"Bearer {token}"} if token else {}
     url = f"http://localhost:8000/products/{product_id}"
-    resp = requests.get(url, headers=headers)
+    resp = requests.get(url, headers=HEADERS)
     if resp.status_code == 200:
         try:
             data = resp.json()
@@ -27,10 +29,8 @@ def get_product_detail(product_id: str) -> Optional[Product]:
 
 # Servicio para obtener productos similares
 def get_similar_products(product_id: str) -> List[Product]:
-    token = st.session_state.get("token")
-    headers = {"Authorization": f"Bearer {token}"} if token else {}
     url = f"http://localhost:8000/products/{product_id}/similar"
-    resp = requests.get(url, headers=headers)
+    resp = requests.get(url, headers=HEADERS)
     if resp.status_code == 200:
         try:
             return [Product(**item) for item in resp.json()]

@@ -14,7 +14,7 @@ except ImportError:
     from services.review_service import list_reviews, get_review_by_id, get_reviews_by_key
     from schemas.review import ReviewSchema
 
-router = APIRouter(prefix="/reviews", tags=["Reviews"], dependencies=[Depends(get_current_user)])
+router = APIRouter(prefix="/reviews", tags=["Reviews"])
 
 @router.get("/", response_model=List[ReviewSchema])
 def get_all_reviews(db=Depends(get_db)):

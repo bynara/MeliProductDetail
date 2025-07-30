@@ -76,7 +76,7 @@ class TestProductService(unittest.TestCase):
         self.assertEqual(result.price, 99.99)
         mock_get.assert_called_once_with(
             "http://localhost:8000/products/1",
-            headers={"Authorization": "Bearer test_token"}
+            headers={}
         )
 
     @patch('services.product_service.requests.get')
@@ -154,7 +154,7 @@ class TestProductService(unittest.TestCase):
         self.assertEqual(result[1].id, 2)
         mock_get.assert_called_once_with(
             "http://localhost:8000/products/1/similar",
-            headers={"Authorization": "Bearer test_token"}
+            headers={}
         )
 
     @patch('services.product_service.requests.get')

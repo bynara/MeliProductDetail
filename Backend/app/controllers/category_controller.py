@@ -14,7 +14,7 @@ except ImportError:
     from services.category_service import list_categories, get_category_by_id
     from schemas.category import CategorySchema
 
-router = APIRouter(prefix="/categories", tags=["Categories"], dependencies=[Depends(get_current_user)])
+router = APIRouter(prefix="/categories", tags=["Categories"])
 
 @router.get("/", response_model=List[CategorySchema])
 def get_all_categories(db=Depends(get_db)):

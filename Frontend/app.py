@@ -11,20 +11,6 @@ def handle_login(username, password):
         st.error(f"An error occurred: {e}")
         return None
 
-def process_login():
-    # Default credentials
-    username = "testuser"
-    password = "testpass"
-    token = handle_login(username, password)
-    if token:
-        st.session_state['logged_in'] = True
-        st.session_state['token'] = token
-        st.session_state['show_product_detail'] = True
-        show_product_detail_view()
-    elif token is None:
-        pass  # Error already shown in handle_login
-    else:
-        st.error("Login failed")
 
 def show_product_detail_view():
     from pages import product_detail
@@ -278,15 +264,7 @@ def main():
     </style>
     """, unsafe_allow_html=True)
     
-    if 'logged_in' not in st.session_state:
-        st.session_state['logged_in'] = False
-    if 'token' not in st.session_state:
-        st.session_state['token'] = None
-
-    if not st.session_state['logged_in']:
-        process_login()
-    elif st.session_state.get('show_product_detail', False):
-        show_product_detail_view()
+    show_product_detail_view()
 
 
 if __name__ == "__main__":
