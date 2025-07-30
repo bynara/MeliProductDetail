@@ -43,12 +43,17 @@ python run_simple.py
 
 El script `run_fullstack.py` ejecuta automáticamente tanto backend como frontend:
 
+> ⚠️ **Nota**: Este script usa emojis Unicode y puede fallar en Windows. Para Windows, usa `run_simple.py`
+
 ```bash
 # 1. Navegar al directorio del proyecto
 cd MeliProductDetail
 
-# 2. Ejecutar el script completo
+# 2. Ejecutar el script completo (Linux/macOS recomendado)
 python run_fullstack.py
+
+# Para Windows, usar en su lugar:
+python run_simple.py
 ```
 
 **¿Qué hacen estos scripts?**
