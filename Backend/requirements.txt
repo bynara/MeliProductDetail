@@ -1,0 +1,18 @@
+# Core FastAPI dependencies
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+
+# Authentication and security
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.6
+
+# Development and testing
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+
+# Optional: for better development experience
+# black>=23.0.0          # Code formatting
+# isort>=5.12.0          # Import sorting
+# flake8>=6.0.0          # Linting
