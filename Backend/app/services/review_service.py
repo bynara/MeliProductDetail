@@ -1,8 +1,17 @@
 from collections import Counter
-from ..schemas.general_rating import GeneralRating
-from ..repository import get_all, get_item_by_id
-from ..schemas.review import ReviewSchema
-from ..core.logger import logger
+
+try:
+    # Importaciones relativas para cuando se ejecuta como módulo
+    from ..schemas.general_rating import GeneralRating
+    from ..repository import get_all, get_item_by_id
+    from ..schemas.review import ReviewSchema
+    from ..core.logger import logger
+except ImportError:
+    # Importaciones absolutas para cuando se ejecuta directamente
+    from app.schemas.general_rating import GeneralRating
+    from app.repository import get_all, get_item_by_id
+    from app.schemas.review import ReviewSchema
+    from app.core.logger import logger
 
 def list_reviews(db: dict) -> list[ReviewSchema]:
     logger.info("Starting to list all reviews")

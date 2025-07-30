@@ -1,6 +1,13 @@
-from ..repository import get_all, get_item_by_id
-from ..schemas.category import CategorySchema
-from ..core.logger import logger
+try:
+    # Importaciones relativas para cuando se ejecuta como módulo
+    from ..repository import get_all, get_item_by_id
+    from ..schemas.category import CategorySchema
+    from ..core.logger import logger
+except ImportError:
+    # Importaciones absolutas para cuando se ejecuta directamente
+    from app.repository import get_all, get_item_by_id
+    from app.schemas.category import CategorySchema
+    from app.core.logger import logger
 
 def list_categories(db: dict) -> list[CategorySchema]:
     logger.info("Starting to list all categories")

@@ -1,9 +1,19 @@
-from ..schemas.product import ProductSchema
-from ..schemas.category import CategorySchema
-from ..schemas.payment_method import PaymentMethodSchema
-from ..repository import get_all, get_item_by_id
-from .review_service import generate_general_rating
-from ..core.logger import logger
+try:
+    # Importaciones relativas para cuando se ejecuta como módulo
+    from ..schemas.product import ProductSchema
+    from ..schemas.category import CategorySchema
+    from ..schemas.payment_method import PaymentMethodSchema
+    from ..repository import get_all, get_item_by_id
+    from .review_service import generate_general_rating
+    from ..core.logger import logger
+except ImportError:
+    # Importaciones absolutas para cuando se ejecuta directamente
+    from app.schemas.product import ProductSchema
+    from app.schemas.category import CategorySchema
+    from app.schemas.payment_method import PaymentMethodSchema
+    from app.repository import get_all, get_item_by_id
+    from app.services.review_service import generate_general_rating
+    from app.core.logger import logger
 
 def enrich_product(obj: dict, db: dict) -> dict:
     logger.debug(f"Enriching product with id: {obj.get('id')}")
