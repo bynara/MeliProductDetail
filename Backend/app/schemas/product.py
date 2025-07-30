@@ -1,0 +1,24 @@
+from pydantic import BaseModel
+from typing import Optional, Dict, Any, List
+from schemas.general_rating import GeneralRating
+from schemas.payment_method import PaymentMethodSchema
+from schemas.category import CategorySchema
+
+class ProductSchema(BaseModel):
+    """Schema representing a product."""
+    id: int
+    title: str
+    description: str
+    price: float
+    images: List[str]
+    seller_id: int
+    payment_methods_ids: List[int]
+    stock: int
+    category_ids: List[int]
+    categories: Optional[List[CategorySchema]] = None
+    payment_methods: Optional[List[PaymentMethodSchema]] = None
+    features: Optional[Dict[str, Any]] = None
+    rating_info: Optional[GeneralRating] = None
+
+    class Config:
+        orm_mode = True
