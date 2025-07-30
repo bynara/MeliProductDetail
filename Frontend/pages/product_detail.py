@@ -182,10 +182,10 @@ def render_single_related_product(related, col, vertical=False):
         st.markdown(table_html, unsafe_allow_html=True)
         st.button("View", key=f"view_{'V' if vertical else 'H'}_{related.id}", use_container_width=True)
 
-def render_related_products(product: Product, vertical=False):
+def render_related_products(similar_products, vertical=False):
+    """Render related products using pre-fetched similar products data"""
     st.markdown("---")
     st.markdown("<h3 style='text-align:center;'>Related Products</h3>", unsafe_allow_html=True)
-    similar_products = get_similar_products(product.id)
     if similar_products:
         if vertical:
             for related in similar_products:
@@ -301,14 +301,17 @@ def show_product_detail(product_id: int):
         st.error("Product not found.")
         return
 
+    # Fetch similar products only once
+    similar_products = get_similar_products(product.id)
+
     col1, col2 = st.columns([6, 2])
     with col1:
         inner_col2 = render_product_images(product)
         render_product_info(product, inner_col2)
-        render_related_products(product)
+        render_related_products(similar_products)
         render_product_description(product)
         render_reviews(product)
     with col2:
         render_checkout_info(product)
         render_seller_info(product)
-        render_related_products(product, vertical=True)
+        render_related_products(similar_products, vertical=True)

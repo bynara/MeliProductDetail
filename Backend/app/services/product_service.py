@@ -70,12 +70,13 @@ def get_product_by_id(db: dict, product_id: int) -> ProductSchema:
 
 def get_similar_products(db: dict, product_id: int, limit: int = 5) -> list[ProductSchema]:
     logger.info(f"Getting similar products for product id: {product_id}")
-    product = get_product_by_id(db, product_id)
+    obj = get_item_by_id(db, "products", product_id)
+    product = ProductSchema.model_validate(obj)
     target_categories = set(getattr(product, "category_ids", []))
     if not target_categories:
         logger.info(f"No categories found for product id: {product_id}. Returning empty list.")
         return []
-    all_products = list_products(db)
+    all_products = [ProductSchema.model_validate(obj) for obj in get_all(db, "products")]
     similarities = []
     for p in all_products:
         if p.id == product_id:
