@@ -73,23 +73,23 @@ def main():
     
     try:
         import uvicorn
-        print("🚀 Starting FastAPI application...")
-        print("📡 Server will be available at: http://localhost:8000")
-        print("📚 API documentation at: http://localhost:8000/docs")
-        print("🔄 Auto-reload enabled for development")
-        print("⏹️  Press CTRL+C to stop")
+        print("Starting FastAPI application...")
+        print("Server will be available at: http://localhost:8000")
+        print("API documentation at: http://localhost:8000/docs")
+        print("Auto-reload enabled for development")
+        print("Press CTRL+C to stop")
         
         # Use import string for proper reload support
         uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
         
     except ImportError as e:
-        print(f"❌ Failed to import required modules: {e}")
-        print("💡 Try running: python setup.py")
+        print(f"Failed to import required modules: {e}")
+        print("Try running: python setup.py")
         sys.exit(1)
     except KeyboardInterrupt:
-        print("\n👋 Application stopped by user")
+        print("\nApplication stopped by user")
     except Exception as e:
-        print(f"❌ Application error: {e}")
+        print(f"Application error: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":
