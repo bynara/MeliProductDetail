@@ -292,50 +292,11 @@ def get_related_product_table_html(related, item_width=120, item_height=280):
         </div>
     """
 
-def render_single_related_product(related, col, vertical=False):
+def render_single_related_product(related, col):
     with col:
         table_html = get_related_product_table_html(related)
         st.markdown(table_html, unsafe_allow_html=True)
         
-        # Botón View estilizado más pequeño
-        button_id = f"view_{'V' if vertical else 'H'}_{related.id}"
-        st.markdown(f"""
-        <style>
-        .small-view-button-{button_id} {{
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            color: #495057;
-            padding: 0.4rem 0.8rem;
-            border: 1px solid #dee2e6;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            width: 100%;
-            margin-top: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 32px;
-        }}
-        .small-view-button-{button_id}:hover {{
-            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-            color: #343a40;
-            border-color: #adb5bd;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }}
-        .small-view-button-{button_id}:active {{
-            transform: translateY(0px);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        }}
-        </style>
-        
-        <div class="small-view-button-{button_id}">
-            View
-        </div>
-        """, unsafe_allow_html=True)
 
 def render_related_products(similar_products, vertical=False):
     """Render related products using pre-fetched similar products data"""
@@ -361,7 +322,7 @@ def render_related_products(similar_products, vertical=False):
         if vertical:
             for related in similar_products:
                 col = st.container()
-                render_single_related_product(related, col, vertical=True)
+                render_single_related_product(related, col)
                 st.markdown("---")
         else:
             cols = st.columns(len(similar_products))

@@ -20,48 +20,61 @@ def show_product_detail_view():
 
 def main():
     # Make the page wider using "wide" layout
-    st.set_page_config(page_title="Product Detail MeLi", page_icon="assets/icon.png")
+    st.set_page_config(
+        page_title="Product Detail MeLi", 
+        page_icon="assets/icon.png",
+        initial_sidebar_state="collapsed"
+    )
     
-    # Custom CSS for white background across the entire application
+    # Header estilo MercadoLibre
+    # Convertir la imagen a base64 para incluirla en el HTML
+    import base64
+    try:
+        with open("assets/logo_meli.webp", "rb") as img_file:
+            img_data = base64.b64encode(img_file.read()).decode()
+            logo_html = f'<img src="data:image/webp;base64,{img_data}" alt="MercadoLibre" style="height: 40px; max-width: 200px; object-fit: contain;">'
+    except FileNotFoundError:
+        logo_html = '<span style="font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; color: #333;">MercadoLibre</span>'
+    
+    st.markdown(f"""
+    <div style="background-color: #FFE600; padding: 20px; margin: -1rem -1rem 2rem -1rem; border-bottom: 1px solid #ccc; width: calc(100% + 2rem); margin-left: -1rem; box-sizing: border-box;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: flex-start;">
+            {logo_html}
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # CSS para la aplicación
     st.markdown("""
     <style>
     /* Import Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     
-    /* Main application background */
+    /* Eliminar fondos blancos que interfieren con el header */
+    div[data-testid="stVerticalBlock"] > div:first-child {
+        background-color: transparent !important;
+    }
+    div[data-testid="element-container"]:first-child {
+        background-color: transparent !important;
+    }
+    
+    /* Main application styling */
     .stApp {
         background-color: white !important;
         font-family: 'Inter', sans-serif !important;
         color: #2c3e50 !important;
     }
     
-    /* Main container background */
+    /* Remove default Streamlit padding */
     .main .block-container {
         background-color: white !important;
-        padding: 2rem 1rem !important;
+        padding-top: 1rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-bottom: 2rem !important;
     }
     
-    /* Sidebar background */
-    .css-1d391kg {
-        background-color: white !important;
-    }
-    
-    /* All container elements background */
-    .element-container {
-        background-color: white !important;
-    }
-    
-    /* Column background */
-    .css-1r6slb0 {
-        background-color: white !important;
-    }
-    
-    /* Widget container background with improved styling */
-    .stSelectbox, .stNumberInput, .stSlider {
-        background-color: white !important;
-    }
-    
-    /* Input and selectbox background with better contrast */
+    /* Input and selectbox styling */
     .stSelectbox > div > div {
         background-color: white !important;
         border: 1px solid #dee2e6 !important;
@@ -116,15 +129,7 @@ def main():
         background: #1565c0 !important;
     }
     
-    /* Primary button styling */
-    .stButton > button[kind="primary"] {
-        background: #1976d2 !important;
-        color: white !important;
-        font-weight: 700 !important;
-        font-size: 1rem !important;
-    }
-    
-    /* Text and markdown background with better typography */
+    /* Text and markdown styling */
     .stMarkdown {
         background-color: white !important;
         color: #2c3e50 !important;
@@ -140,23 +145,23 @@ def main():
         line-height: 1.6 !important;
     }
     
-    /* Tables and other elements background with improved styling */
-    table, tbody, thead, tr, td, th {
-        background-color: white !important;
-        border-color: #e9ecef !important;
-        color: #2c3e50 !important;
+    /* Slider styling */
+    .stSlider > div > div > div > div {
+        background-color: #1976d2 !important;
     }
     
-    /* Metrics background */
-    .metric-container {
-        background-color: #f8f9fa !important;
-        border-radius: 10px !important;
-        padding: 1rem !important;
-        border: 1px solid #e9ecef !important;
-        color: #2c3e50 !important;
+    .stSlider > div > div > div[role="slider"] {
+        background-color: #1976d2 !important;
+        border: 2px solid white !important;
+        box-shadow: 0 2px 6px rgba(25, 118, 210, 0.3) !important;
     }
     
-    /* Info boxes background with better styling */
+    .stSlider label {
+        color: #2c3e50 !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Info boxes styling */
     .stInfo {
         background-color: #e3f2fd !important;
         border-left: 4px solid #2196f3 !important;
@@ -185,61 +190,12 @@ def main():
         color: #2c3e50 !important;
     }
     
-    /* Override any gray or colored background */
-    div[data-testid="stVerticalBlock"] {
-        background-color: white !important;
-    }
-    
-    div[data-testid="stHorizontalBlock"] {
-        background-color: white !important;
-    }
-    
-    /* Ensure all divs have white background by default */
-    div {
-        background-color: white !important;
-    }
-    
-    /* Slider styling */
-    .stSlider > div > div > div > div {
-        background-color: #1976d2 !important;
-    }
-    
-    .stSlider > div > div > div[role="slider"] {
-        background-color: #1976d2 !important;
-        border: 2px solid white !important;
-        box-shadow: 0 2px 6px rgba(25, 118, 210, 0.3) !important;
-    }
-    
-    .stSlider label {
+    /* Ensure text visibility */
+    label, span, div {
         color: #2c3e50 !important;
-        font-weight: 600 !important;
     }
     
-    /* White background for header */
-    header[data-testid="stHeader"] {
-        background-color: white !important;
-        border-bottom: 1px solid #e9ecef !important;
-    }
-    
-    /* White background for toolbar */
-    .css-18ni7ap {
-        background-color: white !important;
-    }
-    
-    /* Card-like styling for containers */
-    div[data-testid="column"] {
-        background-color: white !important;
-        border-radius: 12px !important;
-        padding: 1rem !important;
-    }
-    
-    /* Improved text styling */
-    p {
-        color: #495057 !important;
-        line-height: 1.6 !important;
-    }
-    
-    /* Better link styling */
+    /* Link styling */
     a {
         color: #1976d2 !important;
         text-decoration: none !important;
@@ -251,17 +207,42 @@ def main():
         text-decoration: underline !important;
     }
     
-    /* Ensure text visibility */
-    label, span, div {
-        color: #2c3e50 !important;
+    /* Column styling */
+    div[data-testid="column"] {
+        background-color: white !important;
+        border-radius: 12px !important;
+        padding: 1rem !important;
     }
     
-    /* Select option styling */
-    option {
-        color: #2c3e50 !important;
+    /* Tables styling */
+    table, tbody, thead, tr, td, th {
         background-color: white !important;
+        border-color: #e9ecef !important;
+        color: #2c3e50 !important;
     }
     </style>
+    """, unsafe_allow_html=True)
+    
+    # Breadcrumb navigation estilo MercadoLibre
+    st.markdown("""
+    <div style="
+        background-color: #f5f5f5;
+        padding: 12px 20px;
+        margin: 0 -1rem 1.5rem -1rem;
+        font-size: 13px;
+        color: #666;
+        border-bottom: 1px solid #e6e6e6;
+    ">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center;">
+            <a href="#" style="color: #3B82F6; text-decoration: none; font-weight: 500;">Inicio</a>
+            <span style="margin: 0 8px; color: #ccc; font-weight: 300;">></span>
+            <a href="#" style="color: #3B82F6; text-decoration: none; font-weight: 500;">Tecnología</a>
+            <span style="margin: 0 8px; color: #ccc; font-weight: 300;">></span>
+            <a href="#" style="color: #3B82F6; text-decoration: none; font-weight: 500;">Celulares y Teléfonos</a>
+            <span style="margin: 0 8px; color: #ccc; font-weight: 300;">></span>
+            <span style="color: #666; font-weight: 400;">Celulares y Smartphones</span>
+        </div>
+    </div>
     """, unsafe_allow_html=True)
     
     show_product_detail_view()
