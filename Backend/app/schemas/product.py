@@ -1,8 +1,8 @@
 from pydantic import BaseModel
 from typing import Optional, Dict, Any, List
-from schemas.general_rating import GeneralRating
-from schemas.payment_method import PaymentMethodSchema
-from schemas.category import CategorySchema
+from .general_rating import GeneralRating
+from .payment_method import PaymentMethodSchema
+from .category import CategorySchema
 
 class ProductSchema(BaseModel):
     """Schema representing a product."""

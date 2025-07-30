@@ -1,6 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
-from schemas.general_rating import GeneralRating
+from .general_rating import GeneralRating
 
 class SellerSchema(BaseModel):
     """Schema representing a seller."""
