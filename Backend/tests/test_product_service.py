@@ -436,35 +436,14 @@ class TestProductService(unittest.TestCase):
         self.assertEqual(payment_method.id, 1)
         self.assertEqual(payment_method.name, "Test Payment")
 
-    @patch('app.services.product_service.list_products')
-    @patch('app.services.product_service.get_product_by_id')
-    def test_get_similar_products_success(self, mock_get_product, mock_list_products):
+    @patch('app.services.product_service.get_all')
+    @patch('app.services.product_service.get_item_by_id')
+    def test_get_similar_products_success(self, mock_get_item, mock_get_all):
         """Test successful retrieval of similar products."""
         # Arrange
-        target_product = self._create_product_schema(
-            product_id=1,
-            title="Apple iPhone 14 Pro Max",
-            description="Latest generation smartphone with 6.7-inch Super Retina XDR display, triple 48MP camera, and A16 Bionic chip.",
-            price=1399.99,
-            category_ids=[1, 3, 4, 6],
-            stock=12,
-            payment_methods_ids=[1, 2, 3],
-            features={
-                "color": ["Black", "Silver", "Gold", "Purple"],
-                "storage": ["128GB", "256GB", "512GB", "1TB"]
-            },
-            images=[
-                "https://cdn.pixabay.com/photo/2022/05/04/07/38/iphone-13-pro-max-7173413_1280.jpg",
-                "https://cdn.pixabay.com/photo/2022/09/25/22/25/iphones-7479304_1280.jpg"
-            ]
-        )
-
-        # Use mock_db products and convert to ProductSchema
-        all_products = [
-            ProductSchema.model_validate(prod) for prod in self.mock_db["products"]
-        ]
-        mock_get_product.return_value = target_product
-        mock_list_products.return_value = all_products
+        target_product_data = self.mock_db["products"][0]  # iPhone 14 Pro Max
+        mock_get_item.return_value = target_product_data
+        mock_get_all.return_value = self.mock_db["products"]
 
         # Act
         result = get_similar_products(self.mock_db, 1, limit=3)
@@ -472,26 +451,24 @@ class TestProductService(unittest.TestCase):
         # Assert
         self.assertIsInstance(result, list)
         self.assertEqual(len(result), 3)
-        # Product 2, 3, and 4 share at least one category with product 1
-        # Product 2 shares [1,4,6], Product 3 shares [1,6], Product 4 shares [1,6]
-        # All have 2 shared categories, so should be sorted by id
-        self.assertEqual(result[0].id, 2)
-        self.assertEqual(result[1].id, 5)
-        self.assertEqual(result[2].id, 3)
-        mock_get_product.assert_called_once_with(self.mock_db, 1)
-        mock_list_products.assert_called_once_with(self.mock_db)
+        # Product 2 (Samsung) shares categories [1,4,6] with iPhone
+        # Product 5 (Pixel) shares categories [1,4,6] with iPhone  
+        # Product 3 (Xiaomi) shares categories [1,6] with iPhone
+        # Product 4 (Motorola) shares categories [1,6] with iPhone
+        # Products with more shared categories come first, then sorted by id
+        self.assertEqual(result[0].id, 2)  # Samsung - 3 shared categories [1,4,6]
+        self.assertEqual(result[1].id, 5)  # Pixel - 3 shared categories [1,4,6]
+        self.assertEqual(result[2].id, 3)  # Xiaomi - 2 shared categories [1,6]
+        mock_get_item.assert_called_once_with(self.mock_db, "products", 1)
+        mock_get_all.assert_called_once_with(self.mock_db, "products")
 
-    @patch('app.services.product_service.list_products')
-    @patch('app.services.product_service.get_product_by_id')
-    def test_get_similar_products_no_categories(self, mock_get_product, mock_list_products):
+    @patch('app.services.product_service.get_item_by_id')
+    def test_get_similar_products_no_categories(self, mock_get_item):
         """Test similar products when target product has no categories."""
         # Arrange
-        target_product = self._create_product_schema(
-            title="Product without categories",
-            category_ids=[]
-        )
-        
-        mock_get_product.return_value = target_product
+        product_data = self.mock_db["products"][0].copy()
+        product_data["category_ids"] = []
+        mock_get_item.return_value = product_data
         
         # Act
         result = get_similar_products(self.mock_db, 1)
@@ -499,20 +476,15 @@ class TestProductService(unittest.TestCase):
         # Assert
         self.assertIsInstance(result, list)
         self.assertEqual(len(result), 0)
-        mock_get_product.assert_called_once_with(self.mock_db, 1)
-        mock_list_products.assert_not_called()
+        mock_get_item.assert_called_once_with(self.mock_db, "products", 1)
 
-    @patch('app.services.product_service.list_products')
-    @patch('app.services.product_service.get_product_by_id')
-    def test_get_similar_products_no_similar_found(self, mock_get_product, mock_list_products):
+    @patch('app.services.product_service.get_item_by_id')
+    def test_get_similar_products_no_similar_found(self, mock_get_item):
         """Test similar products when no similar products are found."""
         # Arrange
-        target_product = self._create_product_schema(
-            title="Product without categories",
-            category_ids=[]
-        )
-        
-        mock_get_product.return_value = target_product
+        product_data = self.mock_db["products"][0].copy()
+        product_data["category_ids"] = []
+        mock_get_item.return_value = product_data
         
         # Act
         result = get_similar_products(self.mock_db, 1)
@@ -520,31 +492,29 @@ class TestProductService(unittest.TestCase):
         # Assert
         self.assertIsInstance(result, list)
         self.assertEqual(len(result), 0)
-        mock_get_product.assert_called_once_with(self.mock_db, 1)
+        mock_get_item.assert_called_once_with(self.mock_db, "products", 1)
 
-    @patch('app.services.product_service.list_products')
-    @patch('app.services.product_service.get_product_by_id')
-    def test_get_similar_products_custom_limit(self, mock_get_product, mock_list_products):
+    @patch('app.services.product_service.get_all')
+    @patch('app.services.product_service.get_item_by_id')
+    def test_get_similar_products_custom_limit(self, mock_get_item, mock_get_all):
         """Test similar products with custom limit."""
         # Arrange
-        target_product = self._create_product_schema(
-            title="Product with categories",
-            category_ids=[1]
-        )
+        target_product_data = self.mock_db["products"][0].copy()
+        target_product_data["category_ids"] = [1]
         
-        similar_products = [
-            self._create_product_schema(
-                product_id=i, 
-                title=f"Product {i}", 
-                description=f"Description {i}", 
-                price=float(i * 100),
-                category_ids=[1]
-            )
-            for i in range(2, 12)  # Products 2-11, all with category [1]
-        ]
+        # Create additional products with category [1] to test the limit
+        additional_products = []
+        for i in range(2, 12):  # Products 2-11
+            product = self.mock_db["products"][0].copy()
+            product["id"] = i
+            product["title"] = f"Product {i}"
+            product["description"] = f"Description {i}"
+            product["price"] = float(i * 100)
+            product["category_ids"] = [1]
+            additional_products.append(product)
         
-        mock_get_product.return_value = target_product
-        mock_list_products.return_value = similar_products
+        mock_get_item.return_value = target_product_data
+        mock_get_all.return_value = [target_product_data] + additional_products
         
         # Act
         result = get_similar_products(self.mock_db, 1, limit=3)
@@ -556,62 +526,64 @@ class TestProductService(unittest.TestCase):
         self.assertEqual(result[0].id, 2)
         self.assertEqual(result[1].id, 3)
         self.assertEqual(result[2].id, 4)
-        mock_get_product.assert_called_once_with(self.mock_db, 1)
-        mock_list_products.assert_called_once_with(self.mock_db)
+        mock_get_item.assert_called_once_with(self.mock_db, "products", 1)
+        mock_get_all.assert_called_once_with(self.mock_db, "products")
 
-    @patch('app.services.product_service.get_product_by_id')
-    def test_get_similar_products_target_not_found(self, mock_get_product):
+    @patch('app.services.product_service.get_item_by_id')
+    def test_get_similar_products_target_not_found(self, mock_get_item):
         """Test similar products when target product is not found."""
         # Arrange
-        mock_get_product.side_effect = RuntimeError("Error getting product by id 999: Product not found")
+        mock_get_item.side_effect = ValueError("Item with id 999 not found in table products.")
         
         # Act & Assert
-        with self.assertRaises(RuntimeError) as context:
+        with self.assertRaises(ValueError) as context:
             get_similar_products(self.mock_db, 999)
         
-        self.assertIn("Error getting product by id 999", str(context.exception))
-        mock_get_product.assert_called_once_with(self.mock_db, 999)
+        self.assertIn("Item with id 999 not found in table products", str(context.exception))
+        mock_get_item.assert_called_once_with(self.mock_db, "products", 999)
 
-    @patch('app.services.product_service.list_products')
-    @patch('app.services.product_service.get_product_by_id')
-    def test_get_similar_products_list_products_error(self, mock_get_product, mock_list_products):
+    @patch('app.services.product_service.get_all')
+    @patch('app.services.product_service.get_item_by_id')
+    def test_get_similar_products_list_products_error(self, mock_get_item, mock_get_all):
         """Test similar products when listing all products fails."""
         # Arrange
-        target_product = self._create_product_schema(title="Smartphone")
+        target_product_data = self.mock_db["products"][0].copy()
+        target_product_data["category_ids"] = [1]
         
-        mock_get_product.return_value = target_product
-        mock_list_products.side_effect = RuntimeError("Error listing products: Database error")
+        mock_get_item.return_value = target_product_data
+        mock_get_all.side_effect = Exception("Database error")
         
         # Act & Assert
-        with self.assertRaises(RuntimeError) as context:
+        with self.assertRaises(Exception) as context:
             get_similar_products(self.mock_db, 1)
         
-        self.assertIn("Error listing products", str(context.exception))
-        mock_get_product.assert_called_once_with(self.mock_db, 1)
-        mock_list_products.assert_called_once_with(self.mock_db)
+        self.assertIn("Database error", str(context.exception))
+        mock_get_item.assert_called_once_with(self.mock_db, "products", 1)
+        mock_get_all.assert_called_once_with(self.mock_db, "products")
 
-    @patch('app.services.product_service.list_products')
-    @patch('app.services.product_service.get_product_by_id')
-    def test_get_similar_products_missing_category_ids_attribute(self, mock_get_product, mock_list_products):
+    @patch('app.services.product_service.get_all')
+    @patch('app.services.product_service.get_item_by_id')
+    def test_get_similar_products_missing_category_ids_attribute(self, mock_get_item, mock_get_all):
         """Test similar products when some products don't have category_ids attribute."""
         # Arrange
-        target_product = self._create_product_schema(title="Smartphone")
+        target_product_data = self.mock_db["products"][0].copy()
+        target_product_data["category_ids"] = [1]
         
-        # Create a product without category_ids attribute using a mock
-        product_without_categories = MagicMock()
-        product_without_categories.id = 2
-        product_without_categories.category_ids = None  # This will make getattr return []
+        # Products with and without category_ids
+        product_without_categories = self.mock_db["products"][1].copy()
+        product_without_categories["category_ids"] = []  # Empty categories instead of missing
         
-        similar_product = self._create_product_schema(
-            product_id=3, 
-            title="Similar product", 
-            description="Has categories", 
-            price=299.99
-        )
+        similar_product = self.mock_db["products"][2].copy()
+        similar_product["category_ids"] = [1]  # Has matching category
         
-        all_products = [target_product, product_without_categories, similar_product]
-        mock_get_product.return_value = target_product
-        mock_list_products.return_value = all_products
+        all_products_data = [
+            target_product_data,
+            product_without_categories,
+            similar_product
+        ]
+        
+        mock_get_item.return_value = target_product_data
+        mock_get_all.return_value = all_products_data
         
         # Act
         result = get_similar_products(self.mock_db, 1)
@@ -620,8 +592,8 @@ class TestProductService(unittest.TestCase):
         self.assertIsInstance(result, list)
         self.assertEqual(len(result), 1)  # Only the product with matching categories
         self.assertEqual(result[0].id, 3)
-        mock_get_product.assert_called_once_with(self.mock_db, 1)
-        mock_list_products.assert_called_once_with(self.mock_db)
+        mock_get_item.assert_called_once_with(self.mock_db, "products", 1)
+        mock_get_all.assert_called_once_with(self.mock_db, "products")
 
 
 if __name__ == "__main__":
