@@ -309,7 +309,6 @@ def show_product_detail(product_id: int):
         render_product_description(product)
         render_reviews(product)
     with col2:
-
         render_checkout_info(product)
         render_seller_info(product)
         render_related_products(product, vertical=True)

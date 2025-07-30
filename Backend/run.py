@@ -68,7 +68,7 @@ def main():
     setup_python_path()
     
     if not ensure_dependencies():
-        print("❌ Failed to install required dependencies")
+        print("ERROR: Failed to install required dependencies")
         sys.exit(1)
     
     try:
@@ -78,18 +78,33 @@ def main():
         print("API documentation at: http://localhost:8000/docs")
         print("Auto-reload enabled for development")
         print("Press CTRL+C to stop")
+        print("-" * 50)
         
-        # Use import string for proper reload support
-        uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+        # Configuración mejorada de uvicorn para evitar cuelgues
+        config = uvicorn.Config(
+            "app.main:app", 
+            host="0.0.0.0", 
+            port=8000, 
+            reload=True,
+            reload_delay=0.25,
+            workers=1,
+            access_log=False,  # Reducir logs para evitar bloqueos
+            log_level="info"
+        )
+        
+        server = uvicorn.Server(config)
+        server.run()
         
     except ImportError as e:
-        print(f"Failed to import required modules: {e}")
+        print(f"ERROR: Failed to import required modules: {e}")
         print("Try running: python setup.py")
         sys.exit(1)
     except KeyboardInterrupt:
         print("\nApplication stopped by user")
     except Exception as e:
-        print(f"Application error: {e}")
+        print(f"ERROR: Application error: {e}")
+        import traceback
+        traceback.print_exc()
         sys.exit(1)
 
 if __name__ == "__main__":

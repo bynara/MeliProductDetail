@@ -4,26 +4,36 @@ Una aplicación completa de detalle de productos estilo MercadoLibre con backend
 
 ## 🚀 Inicio Rápido
 
+### 🪟 **Para Windows (RECOMENDADO)**
 ```bash
-# 1. Clonar el repositorio
+# Opción 1: Script optimizado para Windows (SIN problemas Unicode/Performance)
+python run_fixed.py
+
+# Opción 2: Batch file (doble click)
+run_windows_simple.bat
+
+# Opción 3: Script estable con auto-restart
+python run_stable.py
+```
+
+### 🐧 **Para Linux/Mac**
+```bash
+# Clonar y ejecutar
 git clone https://github.com/bynara/MeliProductDetail.git
 cd MeliProductDetail
-
-# 2. Ejecutar la aplicación completa
 python run_fullstack.py
 ```
 
-**¡Eso es todo!** El script se encarga de:
-- ✅ Verificar Python
-- ✅ Crear entorno virtual
-- ✅ Instalar dependencias
-- ✅ Ejecutar backend y frontend
+**✅ El script `run_fixed.py` resuelve:**
+- ❌ Problemas de encoding Unicode en Windows
+- ❌ Cuelgues del backend por puerto bloqueado (8000)
+- ❌ Problemas de performance con uvicorn
+- ❌ Errores de firewall de Windows
 
-## 🌐 URLs de Acceso
-
-- **🎨 Frontend**: http://localhost:8501 (Interfaz de usuario)
-- **🔧 Backend**: http://localhost:8000 (API)
-- **📖 API Docs**: http://localhost:8000/docs (Documentación interactiva)
+**� URLs tras ejecutar run_fixed.py:**
+- **🎨 Frontend**: http://localhost:8502
+- **🔧 Backend**: http://localhost:8000 
+- **📖 API Docs**: http://localhost:8000/docs
 
 ## 📋 Características
 
@@ -73,13 +83,24 @@ MeliProductDetail/
 
 ## 🎯 Formas de Ejecutar
 
-| Método | Comando | Descripción |
-|--------|---------|-------------|
-| **🌟 Completo** | `python run_fullstack.py` | Backend + Frontend automático |
-| **🪟 Windows** | `run_windows.bat` | Doble click en Windows |
-| **🐧 Unix** | `bash run_unix.sh` | Ejecutor para Linux/Mac |
-| **🔧 Backend** | `cd Backend && python setup.py run` | Solo API |
-| **🎨 Frontend** | `cd Frontend && streamlit run app.py` | Solo UI |
+| Método | Comando | Descripción | Windows |
+|--------|---------|-------------|---------|
+| **🌟 Windows Optimizado** | `python run_fixed.py` | ✅ Sin Unicode/Performance issues | ⭐ RECOMENDADO |
+| **🔄 Auto-restart** | `python run_stable.py` | Backend auto-restart + monitoring | ✅ Avanzado |
+| **🪟 Batch Simple** | `run_windows_simple.bat` | Doble click en Windows | ✅ Fácil |
+| **🌍 Multiplataforma** | `python run_fullstack.py` | Backend + Frontend automático | ⚠️ Puede fallar en Windows |
+| **🐧 Unix** | `bash run_unix.sh` | Ejecutor para Linux/Mac | ❌ Solo Unix |
+| **🔧 Backend Solo** | `cd Backend && python setup.py run` | Solo API | ⚠️ Puerto 8000 |
+| **🎨 Frontend Solo** | `cd Frontend && streamlit run app.py` | Solo UI | ⚠️ Requiere backend |
+
+### 🛡️ **Problemas Comunes en Windows y Soluciones**
+
+| Problema | Error | Solución |
+|----------|-------|----------|
+| **Puerto bloqueado** | `WinError 10013` | Usar `run_fixed.py` (puerto 8000) |
+| **Unicode en consola** | `UnicodeEncodeError` | Usar `run_fixed.py` (sin emojis) |
+| **Backend se cuelga** | Proceso no responde | Usar `run_stable.py` (auto-restart) |
+| **Firewall bloquea** | Conexión rechazada | Usar `127.0.0.1` en lugar de `0.0.0.0` |
 
 ## 🧪 Testing
 
@@ -98,14 +119,28 @@ python run_all_tests.py     # 36 tests completos
 
 ## 🔧 Requisitos
 
+### 🪟 **Windows (Configuración Recomendada)**
 - **Python 3.7+** (Recomendado: 3.9+)
-- **Conexión a Internet** (para dependencias)
+- **PowerShell** o **CMD** con permisos de administrador
+- **Puertos 8000 y 8502** disponibles (no 8000/8501 que suelen estar bloqueados)
+- **Windows Defender/Firewall** configurado para permitir Python
 - **4GB RAM** (mínimo)
+
+### 🐧 **Linux/Mac**  
+- **Python 3.7+** (Recomendado: 3.9+)
+- **Bash shell**
 - **Puertos 8000 y 8501** disponibles
+- **4GB RAM** (mínimo)
+
+### 🌐 **General**
+- **Conexión a Internet** (para descargar dependencias)
+- **pip** actualizado (`python -m pip install --upgrade pip`)
 
 ## 📖 Documentación Completa
 
+- **[WINDOWS.md](WINDOWS.md)** - 🪟 **Guía específica y optimizada para Windows**
 - **[RUN.md](RUN.md)** - Guía completa de ejecución
+- **[LINUX.md](LINUX.md)** - Guía específica para sistemas Linux/Unix
 - **[Backend/README.md](Backend/README.md)** - Documentación del backend
 - **[Frontend/tests/README.md](Frontend/tests/README.md)** - Documentación de tests frontend
 
@@ -155,30 +190,75 @@ Contraseña: testpass
 
 ## 🐛 Solución de Problemas
 
-### Error común: "Puerto ocupado"
+### 🪟 **Problemas Específicos de Windows**
+
+#### ❌ Error: "WinError 10013 - Access socket forbidden"
+```bash
+# SOLUCIÓN: Usar puerto alternativo
+python run_fixed.py    # Usa puerto 8000 en lugar de 8000
+```
+
+#### ❌ Error: "UnicodeEncodeError - charmap codec"
+```bash
+# SOLUCIÓN: Script sin emojis Unicode
+python run_fixed.py    # Sin emojis problemáticos
+# O configurar codepage UTF-8
+chcp 65001
+```
+
+#### ❌ Backend se cuelga o no responde
+```bash
+# SOLUCIÓN: Script con auto-restart
+python run_stable.py   # Monitorea y reinicia automáticamente
+```
+
+#### ❌ Firewall bloquea conexiones
+```bash
+# SOLUCIÓN: Usar localhost en lugar de 0.0.0.0
+# El script run_fixed.py ya usa 127.0.0.1 por defecto
+```
+
+### 🌍 **Problemas Generales**
+
+#### Error: "Puerto ocupado"
 ```bash
 # Verificar qué está usando los puertos
-netstat -ano | findstr :8000    # Windows
+netstat -ano | findstr :8000    # Windows (puerto actualizado)
 lsof -i :8000                   # Linux/Mac
+
+# Liberar puerto (Windows)
+netstat -ano | findstr :8000
+taskkill /PID <PID_NUMBER> /F
 ```
 
-### Error común: "Python no encontrado"
+#### Error: "Python no encontrado"
 ```bash
-# Windows
-py run_fullstack.py
+# Windows - probar diferentes comandos
+python run_fixed.py
+py run_fixed.py
+python3 run_fixed.py
 
-# Linux/Mac  
-python3 run_fullstack.py
+# Verificar instalación
+python --version
 ```
 
-### Limpiar y reinstalar
+#### Limpiar y reinstalar
 ```bash
 # Eliminar entorno virtual
 rm -rf mlvenv/          # Linux/Mac
 rmdir /s mlvenv\        # Windows
 
-# Ejecutar de nuevo (recreará todo)
-python run_fullstack.py
+# Ejecutar script optimizado (recreará todo)
+python run_fixed.py
+```
+
+### 🚀 **Scripts de Diagnóstico**
+```bash
+# Para diagnosticar problemas de puertos
+python -c "import socket; s=socket.socket(); s.bind(('127.0.0.1', 8000)); print('Puerto 8000 disponible'); s.close()"
+
+# Para verificar dependencias
+python -c "import fastapi, streamlit, requests; print('Dependencias OK')"
 ```
 
 ## 📚 Documentación Técnica

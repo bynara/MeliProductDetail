@@ -10,6 +10,7 @@ import sys
 import subprocess
 import time
 import platform
+import requests
 from pathlib import Path
 
 # Configuración
@@ -116,8 +117,33 @@ def check_and_install_dependencies():
     else:
         print("OK: Todas las dependencias instaladas correctamente")
 
+def check_backend_health():
+    """Verifica si el backend está funcionando correctamente"""
+    try:
+        response = requests.get("http://localhost:8000/", timeout=5)
+        return response.status_code == 200
+    except requests.exceptions.RequestException:
+        return False
+
+def wait_for_backend_ready(max_wait=30):
+    """Espera hasta que el backend esté listo para recibir requests"""
+    print("Verificando que el backend esté listo...")
+    
+    for i in range(max_wait):
+        if check_backend_health():
+            print("OK: Backend está respondiendo correctamente")
+            return True
+        
+        if i % 5 == 0 and i > 0:
+            print(f"Esperando backend... ({i}/{max_wait}s)")
+        
+        time.sleep(1)
+    
+    print("ERROR: Backend no responde después del timeout")
+    return False
+
 def start_backend():
-    """Inicia el servidor backend"""
+    """Inicia el servidor backend con mejor manejo de errores"""
     python_exe = get_python_executable()
     backend_env = os.environ.copy()
     backend_env["PYTHONPATH"] = str(BACKEND_DIR)
@@ -138,14 +164,28 @@ def start_backend():
             universal_newlines=True
         )
         
-        # Esperar a que el backend inicie
-        time.sleep(5)
+        # Esperar y verificar que el backend inicie correctamente
+        print("Esperando que el backend inicie...")
+        startup_timeout = 15  # Aumentar timeout
+        
+        for i in range(startup_timeout):
+            if backend_process.poll() is not None:
+                # El proceso terminó, obtener la salida de error
+                stdout, stderr = backend_process.communicate()
+                print("ERROR: Backend terminó inesperadamente")
+                print("STDOUT:", stdout[:1000] if stdout else "No output")
+                print("STDERR:", stderr[:1000] if stderr else "No errors")
+                return None
+            
+            time.sleep(1)
+            if i % 3 == 0:  # Mostrar progreso cada 3 segundos
+                print(f"Esperando backend... ({i+1}/{startup_timeout}s)")
         
         if backend_process.poll() is None:
             print("OK: Backend iniciado exitosamente")
             return backend_process
         else:
-            print("ERROR: Backend fallo al iniciar")
+            print("ERROR: Backend fallo al iniciar después del timeout")
             return None
         
     except Exception as e:
@@ -184,6 +224,17 @@ def start_frontend():
         print(f"ERROR: Error iniciando frontend: {e}")
         return None
 
+def restart_backend():
+    """Reinicia el backend si se cuelga"""
+    print("🔄 Intentando reiniciar el backend...")
+    backend_process = start_backend()
+    if backend_process and wait_for_backend_ready():
+        print("✅ Backend reiniciado exitosamente")
+        return backend_process
+    else:
+        print("❌ No se pudo reiniciar el backend")
+        return None
+
 def monitor_processes(backend_process, frontend_process):
     """Monitorea los procesos y maneja la terminación"""
     print("\n" + "=" * 70)
@@ -197,39 +248,72 @@ def monitor_processes(backend_process, frontend_process):
     print("=" * 70)
     
     try:
+        check_count = 0
         while True:
-            # Verificar si los procesos siguen vivos
+            check_count += 1
+            
+            # Verificar backend
             if backend_process and backend_process.poll() is not None:
                 print("WARN: Backend se detuvo inesperadamente")
+                try:
+                    stdout, stderr = backend_process.communicate(timeout=1)
+                    if stdout:
+                        print("Backend STDOUT:", stdout[-500:])  # Últimas 500 chars
+                    if stderr:
+                        print("Backend STDERR:", stderr[-500:])
+                except:
+                    pass
                 break
+            
+            # Verificar frontend
             if frontend_process and frontend_process.poll() is not None:
                 print("WARN: Frontend se detuvo inesperadamente")
+                try:
+                    stdout, stderr = frontend_process.communicate(timeout=1)
+                    if stdout:
+                        print("Frontend STDOUT:", stdout[-500:])
+                    if stderr:
+                        print("Frontend STDERR:", stderr[-500:])
+                except:
+                    pass
                 break
+            
+            # Mostrar estado cada 30 segundos
+            if check_count % 30 == 0:
+                print(f"INFO: Aplicación funcionando correctamente ({check_count}s)")
             
             time.sleep(1)
     except KeyboardInterrupt:
         print("\nDeteniendo servidores...")
-        
-        # Terminar procesos
-        if backend_process:
+        terminate_processes(backend_process, frontend_process)
+
+def terminate_processes(backend_process, frontend_process):
+    """Termina los procesos de manera segura"""
+    # Terminar backend
+    if backend_process:
+        try:
             backend_process.terminate()
-            try:
-                backend_process.wait(timeout=5)
-                print("OK: Backend detenido")
-            except subprocess.TimeoutExpired:
-                backend_process.kill()
-                print("WARN: Backend forzado a terminar")
-        
-        if frontend_process:
+            backend_process.wait(timeout=5)
+            print("OK: Backend detenido")
+        except subprocess.TimeoutExpired:
+            backend_process.kill()
+            print("WARN: Backend forzado a terminar")
+        except Exception as e:
+            print(f"ERROR: Problema terminando backend: {e}")
+    
+    # Terminar frontend
+    if frontend_process:
+        try:
             frontend_process.terminate()
-            try:
-                frontend_process.wait(timeout=5)
-                print("OK: Frontend detenido")
-            except subprocess.TimeoutExpired:
-                frontend_process.kill()
-                print("WARN: Frontend forzado a terminar")
-        
-        print("Hasta luego!")
+            frontend_process.wait(timeout=5)
+            print("OK: Frontend detenido")
+        except subprocess.TimeoutExpired:
+            frontend_process.kill()
+            print("WARN: Frontend forzado a terminar")
+        except Exception as e:
+            print(f"ERROR: Problema terminando frontend: {e}")
+    
+    print("Hasta luego!")
 
 def verify_directories():
     """Verifica que existan los directorios necesarios"""
@@ -274,8 +358,12 @@ def main():
         print("ERROR: No se pudo iniciar el backend")
         sys.exit(1)
     
-    # Esperar un poco para que el backend esté listo
-    time.sleep(3)
+    # Verificar que el backend esté realmente funcionando
+    if not wait_for_backend_ready():
+        print("ERROR: Backend no está respondiendo")
+        if backend_process:
+            backend_process.terminate()
+        sys.exit(1)
     
     # Iniciar frontend
     frontend_process = start_frontend()
