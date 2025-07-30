@@ -12,6 +12,10 @@
 - ✅ **run_simple.py** - Script principal sin Unicode (Windows compatible)
 - ✅ **run_fullstack.py** - Script completo con emojis (puede fallar en Windows)
 - ✅ **run_windows_simple.bat** - Batch file para Windows
+- ✅ **run_unix.sh** - Script robusto para Linux/Unix/macOS
+- ✅ **run_linux.sh** - Script específico para Linux
+- ✅ **install_linux.sh** - Instalador automático para Linux
+- ✅ **Makefile** - Automatización para Linux/Unix
 - ✅ **cleanup_processes.bat** - Script de limpieza de procesos
 
 ### 3. Documentación
@@ -21,7 +25,20 @@
 
 ## 🚀 Cómo Ejecutar el Proyecto
 
-### Opción Recomendada (Windows Compatible)
+### Opción Recomendada (Multiplataforma)
+
+**Windows:**
+```cmd
+run_windows_simple.bat
+```
+
+**Linux/Unix/macOS:**
+```bash
+chmod +x run_unix.sh
+./run_unix.sh
+```
+
+**Python directo (cualquier sistema):**
 ```bash
 python run_simple.py
 ```
@@ -62,6 +79,10 @@ MeliProductDetail/
 ├── run_simple.py              # ⭐ Script principal (recomendado)
 ├── run_fullstack.py           # Script completo con emojis
 ├── run_windows_simple.bat     # Batch para Windows
+├── run_unix.sh                # ⭐ Script para Linux/Unix/macOS
+├── run_linux.sh               # Script específico Linux
+├── install_linux.sh           # Instalador automático Linux
+├── Makefile                   # Automatización Linux/Unix
 ├── cleanup_processes.bat      # Limpieza de procesos
 ├── README.md                  # Documentación general
 ├── RUN.md                     # Guía de ejecución

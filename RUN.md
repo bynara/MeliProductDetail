@@ -60,6 +60,46 @@ python run_fullstack.py
 - ✅ Monitorea ambos procesos
 - ✅ Permite detener ambos con Ctrl+C
 
+### Opción 3: Lanzadores por Plataforma
+
+**🐧 Linux (Múltiples opciones):**
+
+```bash
+# Opción A: Script Unix universal (recomendado)
+chmod +x run_unix.sh
+./run_unix.sh
+
+# Opción B: Makefile (para usuarios avanzados)
+make run                    # Ejecutar directamente
+make full-install          # Instalación completa desde cero
+
+# Opción C: Instalador automático
+chmod +x install_linux.sh
+./install_linux.sh         # Instala dependencias del sistema automáticamente
+
+# Opción D: Script específico Linux
+chmod +x run_linux.sh
+./run_linux.sh
+```
+
+**🪟 Windows:**
+
+```cmd
+# Opción A: Simple (sin Unicode - recomendado)
+run_windows_simple.bat
+
+# Opción B: Completo (con emojis)
+run_windows.bat
+```
+
+**🍎 macOS:**
+
+```bash
+# Mismo que Linux
+chmod +x run_unix.sh
+./run_unix.sh
+```
+
 ### Salida Esperada
 ```
 ======================================================================
