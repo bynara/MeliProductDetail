@@ -70,7 +70,7 @@ class TestSellerService(unittest.TestCase):
         self.assertEqual(result.location, "Test City")
         mock_get.assert_called_once_with(
             "http://localhost:8000/sellers/1",
-            headers={"Authorization": "Bearer test_token"}
+            headers={}
         )
 
     @patch('services.seller_service.requests.get')

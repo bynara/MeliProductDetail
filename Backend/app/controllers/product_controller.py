@@ -14,7 +14,7 @@ except ImportError:
     from services.product_service import list_products, get_product_by_id, get_similar_products
     from schemas.product import ProductSchema
 
-router = APIRouter(prefix="/products", tags=["Products"], dependencies=[Depends(get_current_user)])
+router = APIRouter(prefix="/products", tags=["Products"])
 
 @router.get("/", response_model=List[ProductSchema])
 def get_all_products(db=Depends(get_db)):

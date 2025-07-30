@@ -56,21 +56,14 @@ class TestApp(unittest.TestCase):
         mock_get_token.assert_called_once_with("testuser", "testpass")
         mock_st.error.assert_called_once()
 
-    def test_show_product_detail_view_calls_page(self):
+    @patch('pages.product_detail.show_product_detail')
+    def test_show_product_detail_view(self, mock_show_product_detail):
         """Test product detail view display"""
-        # Act - just test that the function can be called without error
-        try:
-            app.show_product_detail_view()
-            # If we get here, the function executed without throwing an exception
-            success = True
-        except ImportError:
-            # Expected in test environment where pages module may not be available
-            success = True
-        except Exception:
-            success = False
+        # Act
+        app.show_product_detail_view()
         
         # Assert
-        self.assertTrue(success)
+        mock_show_product_detail.assert_called_once_with(1)
 
     @patch('app.show_product_detail_view')
     def test_main_function_calls_product_detail(self, mock_show_product_detail):

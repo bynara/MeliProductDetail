@@ -14,7 +14,7 @@ except ImportError:
     from services.seller_service import list_sellers, get_seller_by_id
     from schemas.seller import SellerSchema
 
-router = APIRouter(prefix="/sellers", tags=["Sellers"], dependencies=[Depends(get_current_user)])
+router = APIRouter(prefix="/sellers", tags=["Sellers"])
 
 @router.get("/", response_model=List[SellerSchema])
 def get_all_sellers(db=Depends(get_db)):

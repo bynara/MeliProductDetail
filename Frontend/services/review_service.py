@@ -4,8 +4,7 @@ from models.review import Review
 from typing import List
 
 def get_product_reviews(product_id) -> List[Review]:
-    token = st.session_state.get("token")
-    headers = {"Authorization": f"Bearer {token}"} if token else {}
+    headers = {}
     url = f"http://localhost:8000/reviews/product/{product_id}"
     resp = requests.get(url, headers=headers)
     if resp.status_code == 200:
