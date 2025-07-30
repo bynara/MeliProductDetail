@@ -181,6 +181,24 @@ rmdir /s mlvenv\        # Windows
 python run_fullstack.py
 ```
 
+## 📚 Documentación Técnica
+
+### 🚀 Guías de Usuario
+- **[RUN.md](RUN.md)** - Guía completa de ejecución paso a paso
+- **[LINUX.md](LINUX.md)** - Guía específica para sistemas Linux/Unix
+- **[COMPLETADO.md](COMPLETADO.md)** - Resumen completo de logros del proyecto
+
+### 🏗️ Documentación Técnica Avanzada
+- **[STACK_DOCUMENTATION.md](STACK_DOCUMENTATION.md)** - Análisis profundo del stack tecnológico, ventajas y arquitectura
+- **[TECHNICAL_CHALLENGES.md](TECHNICAL_CHALLENGES.md)** - Desafíos técnicos encontrados y soluciones implementadas
+
+### 🎯 Highlights Técnicos
+- **Backend**: FastAPI con autenticación JWT, validación Pydantic y documentación automática
+- **Frontend**: Streamlit con gestión de estado avanzada y componentes interactivos
+- **Testing**: 36+ tests unitarios con sistema de mock models para independencia total
+- **Deployment**: Scripts multiplataforma con auto-instalación de dependencias
+- **Cross-Platform**: Soporte completo para Windows, Linux y macOS
+
 ## 🤝 Contribuir
 
 1. Fork el proyecto

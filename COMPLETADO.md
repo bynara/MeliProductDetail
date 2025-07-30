@@ -21,6 +21,9 @@
 ### 3. Documentación
 - ✅ **README.md** - Descripción general del proyecto
 - ✅ **RUN.md** - Guía detallada de ejecución
+- ✅ **LINUX.md** - Guía específica para Linux/Unix
+- ✅ **STACK_DOCUMENTATION.md** - Análisis técnico del stack y arquitectura
+- ✅ **TECHNICAL_CHALLENGES.md** - Desafíos técnicos y soluciones detalladas
 - ✅ **Instrucciones paso a paso** para todos los sistemas operativos
 
 ## 🚀 Cómo Ejecutar el Proyecto
