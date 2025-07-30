@@ -22,7 +22,6 @@ Backend/tests/__pycache__/test_review_service.cpython-313.pyc
 Backend/tests/__pycache__/test_security.cpython-313.pyc
 Backend/tests/__pycache__/test_seller_service.cpython-313.pyc
 Backend/app/repository/__pycache__/provider.cpython-313.pyc
-Backend/app/schemas/seller.py
 Backend/app/schemas/__pycache__/category.cpython-313.pyc
 Backend/app/schemas/__pycache__/payment_method.cpython-313.pyc
 Backend/app/schemas/__pycache__/product.cpython-313.pyc
