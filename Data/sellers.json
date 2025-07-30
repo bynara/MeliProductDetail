@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "name": "Apple Store",
+        "location": "Ciudad de México",
+        "email": "contacto@apple.com",
+        "phone": "555-1234"
+    },
+    {
+        "id": 2,
+        "name": "Samsung Shop",
+        "location": "Guadalajara",
+        "email": "ventas@samsung.com",
+        "phone": "555-5678"
+    },
+    {
+        "id": 3,
+        "name": "Xiaomi Center",
+        "location": "Monterrey",
+        "email": "info@xiaomi.com",
+        "phone": "555-8765"
+    },
+    {
+        "id": 4,
+        "name": "Motorola Outlet",
+        "location": "Puebla",
+        "email": "motorola@outlet.com",
+        "phone": "555-4321"
+    },
+    {
+        "id": 5,
+        "name": "Realme Plaza",
+        "location": "Querétaro",
+        "email": "realme@plaza.com",
+        "phone": "555-2468"
+    },
+    {
+        "id": 6,
+        "name": "Google Store",
+        "location": "Toluca",
+        "email": "google@store.com",
+        "phone": "555-1357"
+    },
+    {
+        "id": 7,
+        "name": "OPPO México",
+        "location": "León",
+        "email": "oppo@mexico.com",
+        "phone": "555-9753"
+    },
+    {
+        "id": 8,
+        "name": "Honor Point",
+        "location": "Tijuana",
+        "email": "honor@point.com",
+        "phone": "555-8642"
+    },
+    {
+        "id": 9,
+        "name": "OnePlus MX",
+        "location": "Mérida",
+        "email": "oneplus@mx.com",
+        "phone": "555-7531"
+    },
+    {
+        "id": 10,
+        "name": "Vivo Shop",
+        "location": "Cancún",
+        "email": "vivo@shop.com",
+        "phone": "555-1597"
+    }
+]

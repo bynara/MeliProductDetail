@@ -1,0 +1,16 @@
+[
+    {
+        "username": "johndoe",
+        "email": "johndoe@example.com",
+        "pwd": "password123",
+        "role": "admin",
+        "active": true
+    },
+    {
+        "username": "janedoe",
+        "email": "janedoe@example.com",
+        "pwd": "securepass456",
+        "role": "user",
+        "active": false
+    }
+]

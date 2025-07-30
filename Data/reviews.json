@@ -1,0 +1,389 @@
+[
+    {
+        "id": 1,
+        "product_id": 1,
+        "seller_id": 1,
+        "buyer": "Carlos Méndez",
+        "review": "Excelente cámara y rendimiento, muy satisfecho con la compra.",
+        "rating": 5,
+        "date": "2024-05-01"
+    },
+    {
+        "id": 2,
+        "product_id": 1,
+        "seller_id": 1,
+        "buyer": "Ana Torres",
+        "review": "El precio es alto pero la calidad lo vale. Muy buen equipo.",
+        "rating": 4,
+        "date": "2024-05-02"
+    },
+    {
+        "id": 3,
+        "product_id": 2,
+        "seller_id": 2,
+        "buyer": "Luis García",
+        "review": "La cámara de 200MP es impresionante, batería dura todo el día.",
+        "rating": 5,
+        "date": "2024-05-03"
+    },
+    {
+        "id": 4,
+        "product_id": 2,
+        "seller_id": 2,
+        "buyer": "María López",
+        "review": "Pantalla espectacular, aunque esperaba más de la autonomía.",
+        "rating": 4,
+        "date": "2024-05-04"
+    },
+    {
+        "id": 5,
+        "product_id": 2,
+        "seller_id": 2,
+        "buyer": "Sergio Peña",
+        "review": "Muy buen rendimiento en juegos.",
+        "rating": 5,
+        "date": "2024-05-05"
+    },
+    {
+        "id": 6,
+        "product_id": 3,
+        "seller_id": 3,
+        "buyer": "Pedro Ruiz",
+        "review": "Muy buen celular por el precio, carga rápida y buen diseño.",
+        "rating": 4,
+        "date": "2024-05-06"
+    },
+    {
+        "id": 7,
+        "product_id": 3,
+        "seller_id": 3,
+        "buyer": "Sofía Jiménez",
+        "review": "La cámara cumple, pero el software podría mejorar.",
+        "rating": 3,
+        "date": "2024-05-07"
+    },
+    {
+        "id": 8,
+        "product_id": 4,
+        "seller_id": 4,
+        "buyer": "Jorge Herrera",
+        "review": "Motorola nunca decepciona, excelente pantalla y cámara.",
+        "rating": 5,
+        "date": "2024-05-08"
+    },
+    {
+        "id": 9,
+        "product_id": 4,
+        "seller_id": 4,
+        "buyer": "Valeria Castro",
+        "review": "Buen equipo, aunque la batería podría durar más.",
+        "rating": 4,
+        "date": "2024-05-09"
+    },
+    {
+        "id": 10,
+        "product_id": 4,
+        "seller_id": 4,
+        "buyer": "Emilio Vargas",
+        "review": "El sistema operativo es muy fluido.",
+        "rating": 5,
+        "date": "2024-05-10"
+    },
+    {
+        "id": 11,
+        "product_id": 5,
+        "seller_id": 5,
+        "buyer": "Ricardo Díaz",
+        "review": "Sorprende la cámara de 200MP, muy buen desempeño.",
+        "rating": 5,
+        "date": "2024-05-11"
+    },
+    {
+        "id": 12,
+        "product_id": 5,
+        "seller_id": 5,
+        "buyer": "Fernanda Ríos",
+        "review": "La pantalla curva es cómoda, pero el software tiene detalles.",
+        "rating": 4,
+        "date": "2024-05-12"
+    },
+    {
+        "id": 13,
+        "product_id": 6,
+        "seller_id": 6,
+        "buyer": "Miguel Ángel",
+        "review": "Fotos increíbles y Android puro, lo recomiendo.",
+        "rating": 5,
+        "date": "2024-05-13"
+    },
+    {
+        "id": 14,
+        "product_id": 6,
+        "seller_id": 6,
+        "buyer": "Paola Martínez",
+        "review": "El diseño es bonito, pero esperaba más batería.",
+        "rating": 4,
+        "date": "2024-05-14"
+    },
+    {
+        "id": 15,
+        "product_id": 7,
+        "seller_id": 7,
+        "buyer": "Daniela Pérez",
+        "review": "Carga rapidísima y buen rendimiento, muy contenta.",
+        "rating": 5,
+        "date": "2024-05-15"
+    },
+    {
+        "id": 16,
+        "product_id": 7,
+        "seller_id": 7,
+        "buyer": "Héctor Salinas",
+        "review": "La cámara es buena pero el software tiene algunos bugs.",
+        "rating": 3,
+        "date": "2024-05-16"
+    },
+    {
+        "id": 17,
+        "product_id": 7,
+        "seller_id": 7,
+        "buyer": "Mónica Estrada",
+        "review": "Muy buen equipo para el precio.",
+        "rating": 4,
+        "date": "2024-05-17"
+    },
+    {
+        "id": 18,
+        "product_id": 8,
+        "seller_id": 8,
+        "buyer": "Gabriela Flores",
+        "review": "Pantalla grande y cámara excelente, lo recomiendo.",
+        "rating": 5,
+        "date": "2024-05-18"
+    },
+    {
+        "id": 19,
+        "product_id": 8,
+        "seller_id": 8,
+        "buyer": "Roberto Luna",
+        "review": "Buen equipo, aunque el precio es elevado.",
+        "rating": 4,
+        "date": "2024-05-19"
+    },
+    {
+        "id": 20,
+        "product_id": 9,
+        "seller_id": 9,
+        "buyer": "Andrea Morales",
+        "review": "Rápido y con buena batería, excelente para juegos.",
+        "rating": 5,
+        "date": "2024-05-20"
+    },
+    {
+        "id": 21,
+        "product_id": 9,
+        "seller_id": 9,
+        "buyer": "Juan Pablo",
+        "review": "La cámara es buena pero esperaba más innovación.",
+        "rating": 4,
+        "date": "2024-05-21"
+    },
+    {
+        "id": 22,
+        "product_id": 10,
+        "seller_id": 10,
+        "buyer": "Esteban Soto",
+        "review": "Gran desempeño y cámara, muy satisfecho.",
+        "rating": 5,
+        "date": "2024-05-22"
+    },
+    {
+        "id": 23,
+        "product_id": 10,
+        "seller_id": 10,
+        "buyer": "Lucía Ramírez",
+        "review": "El diseño es elegante, pero la batería dura poco.",
+        "rating": 3,
+        "date": "2024-05-23"
+    },
+    {
+        "id": 24,
+        "product_id": 11,
+        "seller_id": 1,
+        "buyer": "Javier Luna",
+        "review": "El diseño es elegante y cómodo.",
+        "rating": 4,
+        "date": "2024-05-24"
+    },
+    {
+        "id": 25,
+        "product_id": 11,
+        "seller_id": 1,
+        "buyer": "Marina Gómez",
+        "review": "El Face ID funciona muy rápido.",
+        "rating": 5,
+        "date": "2024-05-25"
+    },
+    {
+        "id": 26,
+        "product_id": 12,
+        "seller_id": 2,
+        "buyer": "Sergio Peña",
+        "review": "Buen rendimiento y batería aceptable.",
+        "rating": 4,
+        "date": "2024-05-26"
+    },
+    {
+        "id": 27,
+        "product_id": 12,
+        "seller_id": 2,
+        "buyer": "Raúl Sánchez",
+        "review": "Carga rápida y buena pantalla.",
+        "rating": 4,
+        "date": "2024-05-27"
+    },
+    {
+        "id": 28,
+        "product_id": 13,
+        "seller_id": 3,
+        "buyer": "Iván Morales",
+        "review": "No me gustó el sonido.",
+        "rating": 2,
+        "date": "2024-05-28"
+    },
+    {
+        "id": 29,
+        "product_id": 13,
+        "seller_id": 3,
+        "buyer": "Laura Paredes",
+        "review": "La pantalla se ve muy bien.",
+        "rating": 5,
+        "date": "2024-05-29"
+    },
+    {
+        "id": 30,
+        "product_id": 14,
+        "seller_id": 4,
+        "buyer": "Sandra León",
+        "review": "La cámara nocturna no es tan buena.",
+        "rating": 3,
+        "date": "2024-05-30"
+    },
+    {
+        "id": 31,
+        "product_id": 14,
+        "seller_id": 4,
+        "buyer": "Cecilia Bravo",
+        "review": "El diseño es moderno y elegante.",
+        "rating": 4,
+        "date": "2024-05-31"
+    },
+    {
+        "id": 32,
+        "product_id": 15,
+        "seller_id": 5,
+        "buyer": "Patricia Díaz",
+        "review": "El software tiene algunos bugs.",
+        "rating": 3,
+        "date": "2024-06-01"
+    },
+    {
+        "id": 33,
+        "product_id": 15,
+        "seller_id": 5,
+        "buyer": "Manuel Ortega",
+        "review": "Muy buena relación calidad-precio.",
+        "rating": 5,
+        "date": "2024-06-02"
+    },
+    {
+        "id": 34,
+        "product_id": 16,
+        "seller_id": 6,
+        "buyer": "Esteban Cruz",
+        "review": "Muy buen equipo para fotografía.",
+        "rating": 5,
+        "date": "2024-06-03"
+    },
+    {
+        "id": 35,
+        "product_id": 16,
+        "seller_id": 6,
+        "buyer": "Tomás Medina",
+        "review": "La batería dura poco.",
+        "rating": 3,
+        "date": "2024-06-04"
+    },
+    {
+        "id": 36,
+        "product_id": 17,
+        "seller_id": 7,
+        "buyer": "Pablo Aguirre",
+        "review": "El sonido es excelente.",
+        "rating": 5,
+        "date": "2024-06-05"
+    },
+    {
+        "id": 37,
+        "product_id": 17,
+        "seller_id": 7,
+        "buyer": "Mónica Estrada",
+        "review": "Muy buen equipo para el precio.",
+        "rating": 4,
+        "date": "2024-06-06"
+    },
+    {
+        "id": 38,
+        "product_id": 18,
+        "seller_id": 8,
+        "buyer": "Silvia Ramos",
+        "review": "Muy buen desempeño en apps.",
+        "rating": 5,
+        "date": "2024-06-07"
+    },
+    {
+        "id": 39,
+        "product_id": 18,
+        "seller_id": 8,
+        "buyer": "Tomás Medina",
+        "review": "La batería dura poco.",
+        "rating": 3,
+        "date": "2024-06-08"
+    },
+    {
+        "id": 40,
+        "product_id": 19,
+        "seller_id": 9,
+        "buyer": "Lorena Vázquez",
+        "review": "Muy buen equipo, lo recomiendo.",
+        "rating": 5,
+        "date": "2024-06-09"
+    },
+    {
+        "id": 41,
+        "product_id": 19,
+        "seller_id": 9,
+        "buyer": "Felipe Torres",
+        "review": "El diseño es moderno.",
+        "rating": 4,
+        "date": "2024-06-10"
+    },
+    {
+        "id": 42,
+        "product_id": 20,
+        "seller_id": 10,
+        "buyer": "Mauricio Peña",
+        "review": "Muy buen equipo para fotografía.",
+        "rating": 5,
+        "date": "2024-06-11"
+    },
+    {
+        "id": 43,
+        "product_id": 20,
+        "seller_id": 10,
+        "buyer": "Patricia Campos",
+        "review": "El software es estable.",
+        "rating": 4,
+        "date": "2024-06-12"
+    }
+]

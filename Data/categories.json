@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Smartphones",
+        "description": "Teléfonos inteligentes de última generación con diversas características y sistemas operativos."
+    },
+    {
+        "id": 2,
+        "name": "Android",
+        "description": "Dispositivos móviles que utilizan el sistema operativo Android."
+    },
+    {
+        "id": 3,
+        "name": "iOS",
+        "description": "Dispositivos móviles de Apple que utilizan el sistema operativo iOS."
+    },
+    {
+        "id": 4,
+        "name": "Gama Alta",
+        "description": "Celulares premium con las mejores especificaciones y tecnología avanzada."
+    },
+    {
+        "id": 5,
+        "name": "Gama Media",
+        "description": "Celulares con buenas prestaciones a precio accesible."
+    },
+    {
+        "id": 6,
+        "name": "Fotografía",
+        "description": "Dispositivos destacados por sus capacidades fotográficas."
+    },
+    {
+        "id": 7,
+        "name": "Carga Rápida",
+        "description": "Celulares que cuentan con tecnología de carga rápida."
+    }
+]

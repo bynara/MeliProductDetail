@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Credit Card",
+        "description": "Payment with credit card from different banks."
+    },
+    {
+        "id": 2,
+        "name": "Debit Card",
+        "description": "Payment with debit card."
+    },
+    {
+        "id": 3,
+        "name": "Mercado Pago",
+        "description": "Payment through the Mercado Pago platform."
+    },
+    {
+        "id": 4,
+        "name": "Cash",
+        "description": "Cash payment at authorized locations."
+    }
+]

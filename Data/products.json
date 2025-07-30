@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "title": "Apple iPhone 14 Pro Max",
+    "description": "Latest generation smartphone with 6.7-inch Super Retina XDR display, triple 48MP camera, and A16 Bionic chip.",
+    "price": 1399.99,
+    "images": [
+      "https://cdn.pixabay.com/photo/2022/05/04/07/38/iphone-13-pro-max-7173413_1280.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/25/22/25/iphones-7479304_1280.jpg"
+    ],
+    "seller_id": 1,
+    "payment_methods_ids": [1, 2, 3],
+    "stock": 12,
+    "category_ids": [1, 3, 4, 6],
+    "features": {
+      "color": ["Black", "Silver", "Gold", "Purple"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"]
+    }
+  },
+  {
+    "id": 2,
+    "title": "Samsung Galaxy S23 Ultra",
+    "description": "Premium phone with 200MP camera, 6.8-inch Dynamic AMOLED 2X display, and long-lasting battery.",
+    "price": 1299.0,
+    "images": [
+      "https://images.pexels.com/photos/30466731/pexels-photo-30466731.jpeg?_gl=1*iscnvd*_ga*MTQ4NjAwOTk2OC4xNzUzODM0OTM4*_ga_8JE65Q40S6*czE3NTM4MzQ5MzgkbzEkZzEkdDE3NTM4MzUwMTAkajU5JGwwJGgw",
+      "https://images.pexels.com/photos/30466740/pexels-photo-30466740.jpeg?_gl=1*ub8a4d*_ga*MTQ4NjAwOTk2OC4xNzUzODM0OTM4*_ga_8JE65Q40S6*czE3NTM4MzQ5MzgkbzEkZzEkdDE3NTM4MzQ5NDMkajU1JGwwJGgw"
+    ],
+    "seller_id": 2,
+    "payment_methods_ids": [1, 2, 4],
+    "stock": 7,
+    "category_ids": [1, 2, 4, 6, 7],
+    "features": {
+      "color": ["Black", "Green", "Lavender", "Cream"],
+      "storage": ["256GB", "512GB", "1TB"]
+    }
+  },
+  {
+    "id": 3,
+    "title": "Xiaomi Redmi Note 12 Pro",
+    "description": "Smartphone with 108MP quad camera, 6.67-inch AMOLED display, and 67W fast charging.",
+    "price": 399.99,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-redmi-note-12-pro-5g-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-redmi-note-12-pro-5g-2.jpg"
+    ],
+    "seller_id": 3,
+    "payment_methods_ids": [2, 1],
+    "stock": 3,
+    "category_ids": [1, 2, 5, 6, 7],
+    "features": {
+      "color": ["Blue", "Gray", "White"],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 4,
+    "title": "Motorola Edge 40",
+    "description": "Phone with 6.55-inch OLED display, 50MP main camera, and MediaTek Dimensity 8020 processor.",
+    "price": 499.0,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/motorola/motorola-edge-40-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/motorola/motorola-edge-40-2.jpg"
+    ],
+    "seller_id": 4,
+    "payment_methods_ids": [1, 2, 3],
+    "stock": 15,
+    "category_ids": [1, 2, 5, 6, 7],
+    "features": {
+      "color": ["Black", "Green", "Blue"],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 5,
+    "title": "Realme 11 Pro+",
+    "description": "Smartphone with 200MP camera, 6.7-inch AMOLED display, and 100W fast charging.",
+    "price": 549.99,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/realme/realme-11-pro-plus-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/realme/realme-11-pro-plus-2.jpg"
+    ],
+    "seller_id": 5,
+    "payment_methods_ids": [2, 1],
+    "stock": 9,
+    "category_ids": [1, 2, 5, 6, 7],
+    "features": {
+      "color": ["Black", "Gold"],
+      "storage": ["256GB", "512GB"]
+    }
+  },
+  {
+    "id": 6,
+    "title": "Google Pixel 7 Pro",
+    "description": "Phone with 50MP triple camera, 6.7-inch LTPO OLED display, and Google Tensor G2 processor.",
+    "price": 1099.0,
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/2/2a/Google_Pixel_7_Pro.png",
+      "https://upload.wikimedia.org/wikipedia/commons/2/2a/Google_Pixel_7_Pro.png"
+    ],
+    "seller_id": 6,
+    "payment_methods_ids": [1, 2, 4],
+    "stock": 2,
+    "category_ids": [1, 2, 4, 6, 7],
+    "features": {
+      "color": ["Obsidian", "Snow", "Hazel"],
+      "storage": ["128GB", "256GB", "512GB"]
+    }
+  },
+  {
+    "id": 7,
+    "title": "OPPO Reno10 Pro",
+    "description": "Smartphone with 50MP main camera, 6.7-inch AMOLED display, and 80W fast charging.",
+    "price": 599.99,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/oppo/oppo-reno10-pro-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/oppo/oppo-reno10-pro-2.jpg"
+    ],
+    "seller_id": 7,
+    "payment_methods_ids": [2, 1, 3],
+    "stock": 14,
+    "category_ids": [1, 2, 5, 6, 7],
+    "features": {
+      "color": ["Gray", "Blue"],
+      "storage": ["256GB", "512GB"]
+    }
+  },
+  {
+    "id": 8,
+    "title": "Honor Magic5 Pro",
+    "description": "Phone with 50MP triple camera, 6.81-inch OLED display, and Snapdragon 8 Gen 2 processor.",
+    "price": 999.0,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/honor/honor-magic5-pro-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/honor/honor-magic5-pro-2.jpg"
+    ],
+    "seller_id": 8,
+    "payment_methods_ids": [1, 2],
+    "stock": 5,
+    "category_ids": [1, 2, 4, 6],
+    "features": {
+      "color": ["Black", "Green"],
+      "storage": ["256GB", "512GB"]
+    }
+  },
+  {
+    "id": 9,
+    "title": "OnePlus 11",
+    "description": "Smartphone with 50MP triple camera, 6.7-inch AMOLED display, and 5000mAh battery.",
+    "price": 799.99,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-11-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-11-2.jpg"
+    ],
+    "seller_id": 9,
+    "payment_methods_ids": [2, 1, 4],
+    "stock": 8,
+    "category_ids": [1, 2, 4, 6, 7],
+    "features": {
+      "color": ["Black", "Green"],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 10,
+    "title": "Vivo X90 Pro",
+    "description": "Phone with 50MP main camera, 6.78-inch AMOLED display, and MediaTek Dimensity 9200 processor.",
+    "price": 899.0,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-x90-pro-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-x90-pro-2.jpg"
+    ],
+    "seller_id": 10,
+    "payment_methods_ids": [1, 2, 3],
+    "stock": 1,
+    "category_ids": [1, 2, 4, 6],
+    "features": {
+      "color": ["Black", "Red"],
+      "storage": ["256GB", "512GB"]
+    }
+  },
+  {
+    "id": 11,
+    "title": "Apple iPhone 13",
+    "description": "Smartphone with 6.1-inch Super Retina XDR display and A15 Bionic chip.",
+    "price": 899.99,
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/1/1d/IPhone_13_Blue.png",
+      "https://upload.wikimedia.org/wikipedia/commons/1/1d/IPhone_13_Blue.png"
+    ],
+    "seller_id": 1,
+    "payment_methods_ids": [1, 2, 3],
+    "stock": 10,
+    "category_ids": [1, 3, 4, 6],
+    "features": {
+      "color": ["Blue", "Pink", "Midnight", "Starlight", "Red"],
+      "storage": ["128GB", "256GB", "512GB"]
+    }
+  },
+  {
+    "id": 12,
+    "title": "Samsung Galaxy A54",
+    "description": "Phone with 6.4-inch Super AMOLED display and 50MP triple camera.",
+    "price": 499.0,
+    "images": [
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80"
+    ],
+    "seller_id": 2,
+    "payment_methods_ids": [1, 2, 4],
+    "stock": 12,
+    "category_ids": [1, 2, 4, 6],
+    "features": {
+      "color": ["Black", "White", "Violet", "Lime"],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 13,
+    "title": "Xiaomi Poco F5 Pro",
+    "description": "Smartphone with 6.67-inch AMOLED display and Snapdragon 8+ Gen 1 processor.",
+    "price": 599.99,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-poco-f5-pro-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-poco-f5-pro-2.jpg"
+    ],
+    "seller_id": 3,
+    "payment_methods_ids": [2, 1],
+    "stock": 7,
+    "category_ids": [1, 2, 5, 6],
+    "features": {
+      "color": ["Black", "White"],
+      "storage": ["256GB", "512GB"]
+    }
+  },
+  {
+    "id": 14,
+    "title": "Motorola Moto G73",
+    "description": "Phone with 6.5-inch FHD+ display and 50MP dual camera.",
+    "price": 299.0,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/motorola/motorola-moto-g73-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/motorola/motorola-moto-g73-2.jpg"
+    ],
+    "seller_id": 4,
+    "payment_methods_ids": [1, 2, 3],
+    "stock": 20,
+    "category_ids": [1, 2, 5, 6],
+    "features": {
+      "color": ["Blue", "White"],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 15,
+    "title": "Realme Narzo 60 Pro",
+    "description": "Smartphone with 100MP camera and 6.7-inch AMOLED display.",
+    "price": 399.99,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/realme/realme-narzo-60-pro-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/realme/realme-narzo-60-pro-2.jpg"
+    ],
+    "seller_id": 5,
+    "payment_methods_ids": [2, 1],
+    "stock": 11,
+    "category_ids": [1, 2, 5, 6],
+    "features": {
+      "color": ["Black", "Orange"],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 16,
+    "title": "Google Pixel 6a",
+    "description": "Compact phone with 6.1-inch OLED display and 12MP dual camera.",
+    "price": 449.0,
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/2/2a/Google_Pixel_6a.png",
+      "https://upload.wikimedia.org/wikipedia/commons/2/2a/Google_Pixel_6a.png"
+    ],
+    "seller_id": 6,
+    "payment_methods_ids": [1, 2, 4],
+    "stock": 6,
+    "category_ids": [1, 2, 4, 6],
+    "features": {
+      "color": ["Charcoal", "Chalk", "Sage"],
+      "storage": ["128GB"]
+    }
+  },
+  {
+    "id": 17,
+    "title": "OPPO Find X5",
+    "description": "Smartphone with 50MP triple camera and 6.55-inch AMOLED display.",
+    "price": 799.99,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/oppo/oppo-find-x5-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/oppo/oppo-find-x5-2.jpg"
+    ],
+    "seller_id": 7,
+    "payment_methods_ids": [2, 1, 3],
+    "stock": 9,
+    "category_ids": [1, 2, 5, 6],
+    "features": {
+      "color": ["Black", "White"],
+      "storage": ["256GB"]
+    }
+  },
+  {
+    "id": 18,
+    "title": "Honor X9a",
+    "description": "Phone with 6.67-inch AMOLED display and 5100mAh battery.",
+    "price": 349.0,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/honor/honor-x9a-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/honor/honor-x9a-2.jpg"
+    ],
+    "seller_id": 8,
+    "payment_methods_ids": [1, 2],
+    "stock": 13,
+    "category_ids": [1, 2, 4, 6],
+    "features": {
+      "color": ["Titanium Silver", "Emerald Green", "Midnight Black"],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 19,
+    "title": "OnePlus Nord CE 3 Lite",
+    "description": "Smartphone with 108MP triple camera and 6.72-inch LCD display.",
+    "price": 299.99,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-nord-ce-3-lite-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-nord-ce-3-lite-2.jpg"
+    ],
+    "seller_id": 9,
+    "payment_methods_ids": [2, 1, 4],
+    "stock": 18,
+    "category_ids": [1, 2, 4, 6],
+    "features": {
+      "color": ["Chromatic Gray", "Pastel Lime"],
+      "storage": ["128GB", "256GB"]
+    }
+  },
+  {
+    "id": 20,
+    "title": "Vivo V27 Pro",
+    "description": "Phone with 50MP triple camera and 6.78-inch AMOLED display.",
+    "price": 499.0,
+    "images": [
+      "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-v27-pro-1.jpg",
+      "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-v27-pro-2.jpg"
+    ],
+    "seller_id": 10,
+    "payment_methods_ids": [1, 2, 3],
+    "stock": 4,
+    "category_ids": [1, 2, 4, 6],
+    "features": {
+      "color": ["Magic Blue", "Noble Black"],
+      "storage": ["128GB", "256GB"]
+    }
+  }
+]
