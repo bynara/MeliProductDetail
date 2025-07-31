@@ -1,10 +1,8 @@
 try:
-    # Importaciones relativas para cuando se ejecuta como módulo
     from ..repository import get_all, get_item_by_id
     from ..schemas.payment_method import PaymentMethodSchema
     from ..core.logger import logger
 except ImportError:
-    # Importaciones absolutas para cuando se ejecuta directamente
     from app.repository import get_all, get_item_by_id
     from app.schemas.payment_method import PaymentMethodSchema
     from app.core.logger import logger

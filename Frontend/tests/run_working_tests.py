@@ -8,7 +8,6 @@ import unittest
 import sys
 import os
 
-# Add the current directory to the path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 def run_working_tests():
@@ -17,7 +16,6 @@ def run_working_tests():
     print("RUNNING FRONTEND TESTS (WORKING SUBSET)")
     print("=" * 70)
     
-    # Test login service
     print("\n1. Testing Login Service...")
     from test_login_service import TestLoginService
     suite = unittest.TestLoader().loadTestsFromTestCase(TestLoginService)

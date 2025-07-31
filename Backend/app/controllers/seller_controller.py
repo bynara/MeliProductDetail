@@ -2,13 +2,11 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List
 
 try:
-    # Importaciones relativas para cuando se ejecuta como módulo
     from ..core.security import get_current_user
     from ..repository import get_db
     from ..services.seller_service import list_sellers, get_seller_by_id
     from ..schemas.seller import SellerSchema
 except ImportError:
-    # Importaciones absolutas para cuando se ejecuta directamente
     from core.security import get_current_user
     from repository import get_db
     from services.seller_service import list_sellers, get_seller_by_id

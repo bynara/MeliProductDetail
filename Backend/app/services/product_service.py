@@ -1,5 +1,4 @@
 try:
-    # Importaciones relativas para cuando se ejecuta como módulo
     from ..schemas.product import ProductSchema
     from ..schemas.category import CategorySchema
     from ..schemas.payment_method import PaymentMethodSchema
@@ -7,7 +6,6 @@ try:
     from .review_service import generate_general_rating
     from ..core.logger import logger
 except ImportError:
-    # Importaciones absolutas para cuando se ejecuta directamente
     from app.schemas.product import ProductSchema
     from app.schemas.category import CategorySchema
     from app.schemas.payment_method import PaymentMethodSchema

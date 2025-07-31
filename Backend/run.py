@@ -80,7 +80,7 @@ def main():
         print("Press CTRL+C to stop")
         print("-" * 50)
         
-        # Configuración mejorada de uvicorn para evitar cuelgues
+        # Enhanced uvicorn configuration to avoid hanging
         config = uvicorn.Config(
             "app.main:app", 
             host="0.0.0.0", 
@@ -88,7 +88,7 @@ def main():
             reload=True,
             reload_delay=0.25,
             workers=1,
-            access_log=False,  # Reducir logs para evitar bloqueos
+            access_log=False,
             log_level="info"
         )
         

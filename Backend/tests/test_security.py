@@ -7,7 +7,6 @@ import sys
 import os
 import time
 
-# Add the parent directory to the path to import the app modules
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from app.core.security import (

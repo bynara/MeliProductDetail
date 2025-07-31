@@ -1,6 +1,6 @@
 import requests
 
-# Configuración
+# Configuration
 auth_url = "http://localhost:8000/token"
 products_url = "http://localhost:8000/sellers"
 

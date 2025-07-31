@@ -1,13 +1,13 @@
 from collections import Counter
 
 try:
-    # Importaciones relativas para cuando se ejecuta como módulo
+    # Relative imports for when running as module
     from ..schemas.general_rating import GeneralRating
     from ..repository import get_all, get_item_by_id
     from ..schemas.review import ReviewSchema
     from ..core.logger import logger
 except ImportError:
-    # Importaciones absolutas para cuando se ejecuta directamente
+    # Absolute imports for when running directly
     from app.schemas.general_rating import GeneralRating
     from app.repository import get_all, get_item_by_id
     from app.schemas.review import ReviewSchema

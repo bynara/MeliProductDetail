@@ -3,7 +3,6 @@ import sys
 import os
 from unittest.mock import patch, MagicMock
 
-# Add the parent directory to the path to import the app modules
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from app.services.review_service import (
