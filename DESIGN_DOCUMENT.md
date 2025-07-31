@@ -22,12 +22,6 @@ MeliProductDetail is a full-stack application built with FastAPI backend and Str
 - **Built-in Components**: Rich set of UI widgets (forms, charts, tables) out of the box
 - **Low Learning Curve**: Familiar Python syntax for frontend development
 
-**JWT with OAuth2 (Authentication)**
-- **Stateless**: No server-side session storage required, perfect for scalable APIs
-- **Industry Standard**: Widely adopted authentication mechanism with excellent security practices
-- **Cross-Platform**: Works seamlessly across web, mobile, and API integrations
-- **Flexible**: Easy to extend with role-based access control and token refresh mechanisms
-
 **JSON File Storage (Data Layer)**
 - **MVP Simplicity**: No database setup required, perfect for prototyping and development
 - **Version Control**: Easy to track data changes in Git, transparent data management
