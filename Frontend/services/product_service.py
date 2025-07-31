@@ -27,7 +27,7 @@ def get_product_detail(product_id: str) -> Optional[Product]:
             return None
     return None
 
-# Servicio para obtener productos similares
+# Service to get similar products
 def get_similar_products(product_id: str) -> List[Product]:
     url = f"http://localhost:8000/products/{product_id}/similar"
     resp = requests.get(url, headers=HEADERS)

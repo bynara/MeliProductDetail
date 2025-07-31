@@ -4,11 +4,9 @@ from fastapi import Depends, FastAPI, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 
 try:
-    # Importaciones relativas para cuando se ejecuta como módulo
     from .core.security import authenticate_user, create_access_token
     from .controllers import seller_controller, category_controller, payment_method_controller, product_controller, review_controller
 except ImportError:
-    # Importaciones absolutas para cuando se ejecuta directamente
     from core.security import authenticate_user, create_access_token
     from controllers import seller_controller, category_controller, payment_method_controller, product_controller, review_controller
 

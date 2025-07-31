@@ -1,11 +1,11 @@
 try:
-    # Importaciones relativas para cuando se ejecuta como módulo
+    # Relative imports for when running as module
     from ..schemas.seller import SellerSchema
     from ..repository import get_all, get_item_by_id
     from .review_service import generate_general_rating
     from ..core.logger import logger
 except ImportError:
-    # Importaciones absolutas para cuando se ejecuta directamente
+    # Absolute imports for when running directly
     from app.schemas.seller import SellerSchema
     from app.repository import get_all, get_item_by_id
     from app.services.review_service import generate_general_rating

@@ -1,362 +1,103 @@
-# 🚀 MeliProductDetail - Guía de Ejecución
+# Startup Scripts - MeliProductDetail
 
-Esta guía explica cómo ejecutar el proyecto MeliProductDetail de manera completa, incluyendo tanto el backend como el frontend.
+This directory contains automated scripts to facilitate the setup and startup of the MeliProductDetail project.
 
-## 📋 Índice
+## Available Files
 
-1. [Requisitos Previos](#-requisitos-previos)
-2. [Ejecución Rápida](#-ejecución-rápida)
-3. [Ejecución Manual](#-ejecución-manual)
-4. [Ejecución de Tests](#-ejecución-de-tests)
-5. [URLs de Acceso](#-urls-de-acceso)
-6. [Solución de Problemas](#-solución-de-problemas)
-7. [Estructura del Proyecto](#-estructura-del-proyecto)
+- **`launch.bat`** - Simple script for Windows users (recommended)
+- **`start.ps1`** - Main PowerShell script (more complete)
+- **`start.bat`** - Basic batch alternative
+- **`stop.ps1`** - Script to stop all services
 
-## 🔧 Requisitos Previos
+## Quick Usage
 
-### Requisitos Mínimos
-- **Python 3.7+** (Recomendado: Python 3.9 o superior)
-- **Git** (para clonar el repositorio)
-- **Conexión a Internet** (para instalación de dependencias)
-
-### Verificar Instalación
-```bash
-python --version          # Debe mostrar 3.7+
-pip --version             # Verificar que pip esté disponible
-```
-
-## 🚀 Ejecución Rápida
-
-### Opción 1: Script Simple (🌟 **RECOMENDADO PARA WINDOWS**)
-
-El script `run_simple.py` ejecuta sin caracteres Unicode (compatible con Windows):
-
-```bash
-# 1. Navegar al directorio del proyecto
-cd MeliProductDetail
-
-# 2. Ejecutar el script simple
-python run_simple.py
-```
-
-### Opción 2: Script Full Stack Completo
-
-El script `run_fullstack.py` ejecuta automáticamente tanto backend como frontend:
-
-> ⚠️ **Nota**: Este script usa emojis Unicode y puede fallar en Windows. Para Windows, usa `run_simple.py`
-
-```bash
-# 1. Navegar al directorio del proyecto
-cd MeliProductDetail
-
-# 2. Ejecutar el script completo (Linux/macOS recomendado)
-python run_fullstack.py
-
-# Para Windows, usar en su lugar:
-python run_simple.py
-```
-
-**¿Qué hacen estos scripts?**
-- ✅ Verifica la versión de Python
-- ✅ Crea automáticamente un entorno virtual (`mlvenv/`)
-- ✅ Instala todas las dependencias necesarias
-- ✅ Inicia el backend (FastAPI) en puerto 8000
-- ✅ Inicia el frontend (Streamlit) en puerto 8501
-- ✅ Monitorea ambos procesos
-- ✅ Permite detener ambos con Ctrl+C
-
-### Opción 3: Lanzadores por Plataforma
-
-**🐧 Linux (Múltiples opciones):**
-
-```bash
-# Opción A: Script Unix universal (recomendado)
-chmod +x run_unix.sh
-./run_unix.sh
-
-# Opción B: Makefile (para usuarios avanzados)
-make run                    # Ejecutar directamente
-make full-install          # Instalación completa desde cero
-
-# Opción C: Instalador automático
-chmod +x install_linux.sh
-./install_linux.sh         # Instala dependencias del sistema automáticamente
-
-# Opción D: Script específico Linux
-chmod +x run_linux.sh
-./run_linux.sh
-```
-
-**🪟 Windows:**
-
+### Option 1: Simple Start (Recommended)
 ```cmd
-# Opción A: Simple (sin Unicode - recomendado)
-run_windows_simple.bat
+launch.bat
+```
+Just double-click on `launch.bat` or run it from the command line.
 
-# Opción B: Completo (con emojis)
-run_windows.bat
+### Option 2: Direct PowerShell
+```powershell
+powershell -ExecutionPolicy Bypass -File "start.ps1"
 ```
 
-**🍎 macOS:**
-
-```bash
-# Mismo que Linux
-chmod +x run_unix.sh
-./run_unix.sh
+### Option 3: PowerShell (requires permissions)
+```powershell
+.\start.ps1
 ```
 
-### Salida Esperada
-```
-======================================================================
-🚀 MELIPRODUCTDETAIL - FULL STACK RUNNER
-======================================================================
-📦 Backend: FastAPI + JWT Authentication
-🎨 Frontend: Streamlit + Product Detail UI
-🔧 Auto-instalación de dependencias incluida
-======================================================================
-🐍 Verificando versión de Python...
-✅ Python 3.11.0 detectado
-✅ Entorno virtual encontrado
-🔍 Verificando dependencias...
-📋 Instalando 11 dependencias...
-📦 Instalando fastapi (framework web)...
-✅ fastapi instalado exitosamente
-[... más instalaciones ...]
-🔧 Iniciando Backend (FastAPI)...
-   📍 URL: http://localhost:8000
-   📖 Docs: http://localhost:8000/docs
-✅ Backend iniciado exitosamente
-🎨 Iniciando Frontend (Streamlit)...
-   📍 URL: http://localhost:8501
-✅ Frontend iniciado exitosamente
-
-======================================================================
-🎉 APLICACIÓN FUNCIONANDO
-======================================================================
-🔧 Backend:  http://localhost:8000
-🎨 Frontend: http://localhost:8501
-📖 API Docs: http://localhost:8000/docs
-======================================================================
-💡 Presiona Ctrl+C para detener ambos servidores
-======================================================================
+### Stop Services
+```powershell
+.\stop.ps1
 ```
 
-## 🔧 Ejecución Manual
+## What the script does
 
-Si prefieres ejecutar cada componente por separado:
+1. **Verifies Python**: Confirms that Python 3.8+ is installed and accessible
+2. **Creates virtual environment**: Generates a local `venv` if it doesn't exist
+3. **Verifies files**: Confirms that all necessary files exist
+4. **Installs dependencies**: Automatically installs all dependencies:
+   - Backend: FastAPI, uvicorn, pydantic, python-jose, passlib, requests, pytest
+   - Frontend: streamlit, requests, Pillow, streamlit-carousel, pydantic, pytest
+5. **Starts Backend**: Runs the FastAPI server on port 8000
+6. **Verifies Backend**: Confirms that the server responds correctly
+7. **Starts Frontend**: Runs Streamlit on port 8501
+8. **Automatic management**: Cleans up processes on exit
 
-### Backend (FastAPI)
+## Access URLs
 
-```bash
-# 1. Navegar al directorio backend
-cd Backend
+Once started, you'll have access to:
 
-# 2. Opción A: Usar script de auto-setup (Recomendado)
-python setup.py run
+- **Frontend**: http://localhost:8501
+- **Backend API**: http://localhost:8000  
+- **API Documentation**: http://localhost:8000/docs
+- **Network URL**: A local network URL will be shown for access from other devices
 
-# 2. Opción B: Usar script de ejecución mejorado
-python run.py
+## Requirements
 
-# 2. Opción C: Instalación manual
-pip install -r requirements.txt
-python -m app.main
+- **Python 3.8 or higher** installed on the system
+- **Internet connection** to download dependencies (first time only)
+- **Ports 8000 and 8501 available**
+- **Windows PowerShell** (included in Windows by default)
 
-# 2. Opción D: Uvicorn directo
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+## Enhanced Script Features
+
+- ✅ **Complete verification** of dependencies and files
+- ✅ **Silent installation** of packages (no log spam)
+- ✅ **Automatic verification** of Backend status
+- ✅ **Robust error handling** with clear messages
+- ✅ **Automatic cleanup** of processes on exit
+- ✅ **Clear information** about URLs and service status
+- ✅ **Compatibility** with Windows execution policies
+
+## Troubleshooting
+
+### PowerShell Permission Error
+If you get a permission error when running `start.ps1` directly:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
+Or simply use `launch.bat` which automatically bypasses this issue.
 
-### Frontend (Streamlit)
+### Python Not Found
+- Make sure Python is installed from https://python.org
+- During installation, check "Add Python to PATH"
+- Restart the terminal after installation
 
-```bash
-# 1. Navegar al directorio frontend (en otra terminal)
-cd Frontend
+### Ports Already in Use
+- If ports 8000 or 8501 are in use, stop other services using them
+- Use `netstat -ano | findstr :8000` to see which process is using the port
+- Use `taskkill /PID [number] /F` to terminate the process
 
-# 2. Instalar dependencias
-pip install -r requirements.txt
+### Dependencies Won't Install
+- Verify internet connection
+- If behind a corporate proxy, configure pip appropriately
+- Run `pip install --upgrade pip` in the virtual environment
 
-# 3. Ejecutar Streamlit
-streamlit run app.py --server.port 8501
-```
+## Additional Notes
 
-## 🧪 Ejecución de Tests
-
-### Tests del Backend
-```bash
-cd Backend
-
-# Tests completos
-python -m pytest tests/ -v
-
-# Tests específicos
-python -m unittest tests.test_product_service -v
-python setup.py test  # Con auto-setup
-```
-
-### Tests del Frontend
-```bash
-cd Frontend/tests
-
-# Setup del entorno de testing
-python setup_tests.py
-
-# Todos los tests (36 tests)
-python run_all_tests.py
-
-# Tests individuales
-python -m unittest test_login_service.py -v
-python -m unittest test_product_service.py -v
-```
-
-### Verificación del Sistema
-```bash
-# Backend
-cd Backend
-python verify.py
-
-# Frontend  
-cd Frontend/tests
-python setup_tests.py
-```
-
-## 🌐 URLs de Acceso
-
-Una vez que la aplicación esté ejecutándose:
-
-### 🎨 Frontend (Streamlit)
-- **URL Principal**: http://localhost:8502
-- **Descripción**: Interfaz de usuario para ver detalles de productos
-- **Funcionalidades**:
-  - Login automático con credenciales de prueba
-  - Visualización de productos con imágenes
-  - Información de vendedores y reviews
-  - Productos similares y categorías
-
-### 🔧 Backend (FastAPI)
-- **API Base**: http://localhost:8000
-- **Documentación Interactiva**: http://localhost:8000/docs
-- **Esquemas OpenAPI**: http://localhost:8000/openapi.json
-- **Endpoints principales**:
-  - `POST /token` - Autenticación JWT
-  - `GET /products/{id}` - Detalle de producto
-  - `GET /products/{id}/similar` - Productos similares
-  - `GET /sellers/{id}` - Información de vendedor
-  - `GET /reviews/product/{id}` - Reviews de producto
-
-### 📊 Credenciales de Prueba
-```
-Usuario: testuser
-Contraseña: testpass
-```
-
-## 🐛 Solución de Problemas
-
-### Error: "Python no encontrado"
-```bash
-# Windows
-py --version
-py run_fullstack.py
-
-# Linux/Mac
-python3 --version
-python3 run_fullstack.py
-```
-
-### Error: "Puerto ocupado"
-```bash
-# Verificar qué está usando el puerto
-netstat -ano | findstr :8000    # Windows
-lsof -i :8000                   # Linux/Mac
-
-# Cambiar puertos manualmente
-# Backend: editar run_fullstack.py línea del uvicorn
-# Frontend: usar --server.port 8502
-```
-
-### Error: "Módulo no encontrado"
-```bash
-# Reinstalar dependencias
-python run_fullstack.py  # Se encarga automáticamente
-
-# O manualmente:
-cd Backend
-pip install -r requirements.txt
-cd ../Frontend  
-pip install -r requirements.txt
-```
-
-### Error: "Streamlit no inicia"
-```bash
-# Verificar instalación
-pip install streamlit --upgrade
-
-# Ejecutar con debug
-streamlit run app.py --logger.level debug
-```
-
-### Error: "FastAPI no responde"
-```bash
-# Verificar logs del backend
-cd Backend
-python run.py  # Ver logs detallados
-
-# Verificar puerto
-curl http://localhost:8000/docs
-```
-
-### Limpiar Entorno
-```bash
-# Eliminar entorno virtual y recrear
-rm -rf mlvenv/          # Linux/Mac
-rmdir /s mlvenv\        # Windows
-python run_fullstack.py  # Recreará automáticamente
-```
-
-## 📁 Estructura del Proyecto
-
-```
-MeliProductDetail/
-├── run_fullstack.py          # 🌟 Script principal full-stack
-├── RUN.md                    # 📖 Esta guía
-├── Backend/                  # 🔧 API Backend (FastAPI)
-│   ├── app/
-│   │   ├── main.py          # Punto de entrada FastAPI
-│   │   ├── controllers/     # Controladores API
-│   │   ├── services/        # Lógica de negocio
-│   │   ├── models/          # Modelos de datos
-│   │   └── schemas/         # Esquemas Pydantic
-│   ├── tests/               # Tests del backend
-│   ├── Data/                # Archivos JSON de datos
-│   ├── requirements.txt     # Dependencias backend
-│   ├── setup.py            # Auto-setup backend
-│   ├── run.py              # Ejecutor mejorado
-│   └── verify.py           # Verificador sistema
-├── Frontend/                # 🎨 UI Frontend (Streamlit)
-│   ├── app.py              # Aplicación principal
-│   ├── pages/              # Páginas de la UI
-│   ├── services/           # Servicios de API
-│   ├── models/             # Modelos frontend
-│   ├── tests/              # Tests del frontend
-│   │   ├── run_all_tests.py # Ejecutor tests completo
-│   │   ├── mock_models.py   # Modelos mock
-│   │   └── *.py            # Tests individuales
-│   ├── assets/             # Recursos estáticos
-│   └── requirements.txt    # Dependencias frontend
-└── mlvenv/                 # 📦 Entorno virtual (auto-creado)
-```
-
-## 🎯 Opciones de Ejecución Resumidas
-
-| Método | Comando | Descripción | Recomendado |
-|--------|---------|-------------|-------------|
-| **Full Stack** | `python run_fullstack.py` | Ejecuta todo automáticamente | ✅ **SÍ** |
-| Backend Auto | `cd Backend && python setup.py run` | Backend con auto-setup | ✅ |
-| Backend Manual | `cd Backend && python run.py` | Backend estándar | ⚠️ |
-| Frontend | `cd Frontend && streamlit run app.py` | Solo frontend | ⚠️ |
-| Tests Backend | `cd Backend && python setup.py test` | Tests backend | ✅ |
-| Tests Frontend | `cd Frontend/tests && python run_all_tests.py` | Tests frontend | ✅ |
-
-## 🎉 ¡Listo!
-
-Con esta guía deberías poder ejecutar MeliProductDetail sin problemas. El script `run_fullstack.py` es la opción más fácil y maneja todo automáticamente.
-
-Si encuentras algún problema, revisa la sección de solución de problemas o verifica que todos los requisitos estén instalados correctamente.
+- Dependencies are only downloaded the first time
+- The virtual environment is created automatically and reused
+- Services stop automatically when closing the script (Ctrl+C)
+- The script verifies Backend health before continuing
